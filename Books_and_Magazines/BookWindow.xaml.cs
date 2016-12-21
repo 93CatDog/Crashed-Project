@@ -25,6 +25,7 @@ namespace Books_and_Magazines
         private MAIN wn;
         private Book book;
         private string Source = Assembly.GetExecutingAssembly().Location.ToString();
+        private Info NewInfo;
 
         public BookWindow(MAIN w)
         {
@@ -50,12 +51,26 @@ namespace Books_and_Magazines
             }
             this.Source = this.Source.Remove(this.Source.LastIndexOf("Debug") - 5);
             this.Source = this.Source.Replace('\\', '/') + "/" + this.book.FileSource;
+
+            test();
         }
 
         private void OpenBtn_Click(object sender, RoutedEventArgs e)
         {
             Process.Start(this.Source);
             //MessageBox.Show(this.Source);
+        }
+
+        public void test()
+        {
+            Book b = new Book("Za", "rom", "da", 1900);
+            NewInfo = new Info();
+            NewInfo = NewInfo.LoadFromBinaryFile("TEXT.txt");
+            this.NewInfo.Add_Books(b);
+            NewInfo.LoadToBinaryFile("TEXT.txt");
+            this.wn.listView1.Items.Clear();
+            this.wn.listView3.Items.Clear();
+            this.wn.View();
         }
     }
 }

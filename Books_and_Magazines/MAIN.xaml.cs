@@ -21,13 +21,13 @@ namespace Books_and_Magazines
     /// </summary>
     public partial class MAIN : Window
     {
-        private Info minfo;
+        private Info minfo = new Info();
         private string fileName = "TEXT.txt";
         private WindowAddObject wn;
 
         public MAIN()
         {
-            //Change_File();
+            Change_File();
 
             InitializeComponent();
 
@@ -36,7 +36,7 @@ namespace Books_and_Magazines
 
         public void Search_View()
         {
-            minfo = LoadFromBinaryFile(fileName);
+            minfo = minfo.LoadFromBinaryFile(fileName);
             foreach (var item in minfo.Writers)
             {
                 listView1.Items.Add(item);
@@ -53,7 +53,7 @@ namespace Books_and_Magazines
 
         public void View()
         {
-            minfo = LoadFromBinaryFile(fileName);
+            minfo = minfo.LoadFromBinaryFile(fileName);
             foreach (var item in minfo.Writers)
             {
                 listView1.Items.Add(item);
@@ -123,25 +123,25 @@ namespace Books_and_Magazines
                 }
         }
 
-        static void LoadToBinaryFile(object obj, string FileName)
-        {
-            BinaryFormatter binFormat = new BinaryFormatter();
-            using (Stream fStream = new FileStream(FileName, FileMode.Create, FileAccess.Write, FileShare.None))
-            {
-                binFormat.Serialize(fStream, obj);
-            }           
-        }
+        //static void LoadToBinaryFile(object obj, string FileName)
+        //{
+        //    BinaryFormatter binFormat = new BinaryFormatter();
+        //    using (Stream fStream = new FileStream(FileName, FileMode.Create, FileAccess.Write, FileShare.None))
+        //    {
+        //        binFormat.Serialize(fStream, obj);
+        //    }           
+        //}
 
-        static Info LoadFromBinaryFile(string FileName)
-        {
-            BinaryFormatter binFormat = new BinaryFormatter();
+        //static Info LoadFromBinaryFile(string FileName)
+        //{
+        //    BinaryFormatter binFormat = new BinaryFormatter();
 
-            using (Stream fStream = File.OpenRead(FileName))
-            {
-                Info info = (Info)binFormat.Deserialize(fStream);
-                return info;
-            }
-        }
+        //    using (Stream fStream = File.OpenRead(FileName))
+        //    {
+        //        Info info = (Info)binFormat.Deserialize(fStream);
+        //        return info;
+        //    }
+        //}
 
         private void Change_File()
         {
@@ -216,8 +216,8 @@ namespace Books_and_Magazines
             minfo.Add_Books(Master);
             minfo.Add_Writers(Bulgakov);
 
-
-            LoadToBinaryFile(minfo, fileName);
+            minfo.LoadToBinaryFile(fileName);
+            //LoadToBinaryFile(minfo, fileName);
         }
 
         private void Bookmarks_Click(object sender, RoutedEventArgs e)

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Books_and_Magazines
 {
@@ -111,5 +111,26 @@ namespace Books_and_Magazines
             all_information = info_writers + info_publishings;
             return all_information;
         }
+
+        public void LoadToBinaryFile(string FileName)
+        {
+            BinaryFormatter binFormat = new BinaryFormatter();
+            using (Stream fStream = new FileStream(FileName, FileMode.Create, FileAccess.Write, FileShare.None))
+            {
+                binFormat.Serialize(fStream, this);
+            }
+        }
+
+        public Info LoadFromBinaryFile(string FileName)
+        {
+            BinaryFormatter binFormat = new BinaryFormatter();
+
+            using (Stream fStream = File.OpenRead(FileName))
+            {
+                Info info = (Info)binFormat.Deserialize(fStream);
+                return info;
+            }
+        }
+
     }
 }
