@@ -15,7 +15,6 @@ namespace Books_and_Magazines
         private List<Publishing> mPublishings = new List<Publishing>();
         private List<Book> mBooks = new List<Book>();
         private List<Newspaper> mNewspapers = new List<Newspaper>();
-        private List<Article> mArticles = new List<Article>();
 
         public List<Writer> Writers
         {
@@ -43,13 +42,6 @@ namespace Books_and_Magazines
             get
             {
                 return this.mNewspapers;
-            }
-        }
-        public List<Article> Articles
-        {
-            get
-            {
-                return this.mArticles;
             }
         }
 
@@ -86,15 +78,7 @@ namespace Books_and_Magazines
             catch (IndexOutOfRangeException) { return null; }
         }
 
-        public Article GetArticleFromList(int index)
-        {
-            try
-            {
-                return this.mArticles.ElementAt<Article>(index);
-            }
-            catch (IndexOutOfRangeException) { return null; }
-        }
-
+       
         public void Add_Books(Book book)
         {
             this.mBooks.Add(book);
@@ -109,23 +93,7 @@ namespace Books_and_Magazines
         }
         public void Add_Newspapers(Newspaper nsp)
         {
-            this.mNewspapers.Add(nsp);
-            //for (int C = 0; C < Newspapers.Count; C++)
-            //{
-            //    if (GetNewspaperFromList(C) != nsp)
-            //    {
-            //        continue;
-            //    }
-            //    else
-            //    {
-            //        return;
-            //    }
-            //}
-            //this.mNewspapers.Add(nsp);
-        }
-        public void Add_Articles(Article arl)
-        {
-            this.mArticles.Add(arl);
+            this.mNewspapers.Add(nsp);  
         }
 
         public override string ToString()

@@ -36,3 +36,5 @@ D:\28.10\Projects\Books_and_Magazines\Books_and_Magazines\obj\Debug\NewspaperWin
 D:\28.10\Projects\Books_and_Magazines\Books_and_Magazines\obj\Debug\NewspaperWindow.baml
 D:\28.10\Projects\Books_and_Magazines\Books_and_Magazines\obj\Debug\WindowAddObject.g.cs
 D:\28.10\Projects\Books_and_Magazines\Books_and_Magazines\obj\Debug\WindowAddObject.baml
+D:\28.10\Projects\Books_and_Magazines\Books_and_Magazines\obj\Debug\WriterWindow.g.cs
+D:\28.10\Projects\Books_and_Magazines\Books_and_Magazines\obj\Debug\WriterWindow.baml

@@ -16,7 +16,7 @@ namespace Books_and_Magazines
         private bool mAccess;
 
         private Publishing mPublishing;
-        private List<Article> mArticlesList;
+        
 
         public string Name
         {
@@ -137,17 +137,6 @@ namespace Books_and_Magazines
                 this.mPublishing = value;       
             }
         }
-        public List<Article> ArticlesList
-        {
-            get
-            {
-                return this.mArticlesList;
-            }
-        }
-        public void Add_Article(Article art)
-        {
-            this.mArticlesList.Add(art);                     
-        }
         public void Add_Publishing(Publishing pb)
         {
             this.Publishing = pb;
@@ -157,14 +146,12 @@ namespace Books_and_Magazines
         {
             this.mName = Name;
             this.Publishing = null;
-            this.mArticlesList = new List<Article>();
             this.Start_year = Start_year;
         }
         public Newspaper()
         {
             this.mName = null;
             this.mPublishing = null;
-            this.mArticlesList = new List<Article>();
             this.mStart_year = 0;
         }
         public override string ToString()

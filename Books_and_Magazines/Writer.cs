@@ -16,7 +16,6 @@ namespace Books_and_Magazines
         private int mDeathDate;
         private string mImageSource = "pack://application:,,,/Books_and_Magazines;component/DefaultWriter.png";
         private List<Book> mBooksList;
-        private List<Article> mArticlesList;
 
         public string Name
         {
@@ -109,13 +108,6 @@ namespace Books_and_Magazines
             }
         }
 
-        public List<Article> ArticlesList
-        {
-            get
-            {
-                return this.mArticlesList;
-            }
-        }
         public List<Book> BooksList
         {
             get
@@ -128,14 +120,6 @@ namespace Books_and_Magazines
             try
             {
                 return this.mBooksList.ElementAt<Book>(index);
-            }
-            catch (IndexOutOfRangeException) { return null; }
-        }
-        public Article GetArticleFromList(int index)
-        {
-            try
-            {
-                return this.mArticlesList.ElementAt<Article>(index);
             }
             catch (IndexOutOfRangeException) { return null; }
         }
@@ -164,31 +148,7 @@ namespace Books_and_Magazines
                 return str;
             }
         }
-        public string NamesFromArticlesList
-        {
-            get
-            {
-                string str = null;
-                if (this.ArticlesList.Count < 3)
-                {
-                    foreach (var item in ArticlesList)
-                    {
-                        str += item.Header + ", ";
-                    }
-                    str = str.Remove(str.Length - 2);
-                }
-                else
-                {
-                    for (var C = 0; C < 2; C++)
-                    {
-                        str += GetArticleFromList(C).Header + ", ";
-                    }
-                    str = str.Remove(str.Length - 2);
-                    str = str + "...";
-                }
-                return str;
-            }
-        }
+       
 
         public Writer(string name, string surname, int birthdate, int deathdate)
         {
@@ -198,8 +158,7 @@ namespace Books_and_Magazines
             this.mBirthDate = birthdate;
             this.mDeathDate = deathdate;
             this.mBooksList = new List<Book>();
-            this.mArticlesList = new List<Article>();
-            
+           
         }
 
         public override string ToString()
@@ -219,11 +178,6 @@ namespace Books_and_Magazines
             this.mBooksList.Add(bk);
         }
 
-        public void Add_Article(Article art)
-        {
-            this.mArticlesList.Add(art);
-        }
-
         public string Print_Books()
         {
             string result = null;
@@ -233,15 +187,6 @@ namespace Books_and_Magazines
             }
             return result;
         }
-
-        public string Print_Articles()
-        {
-            string result = null;
-            foreach (var item in mArticlesList)
-            {
-                result += item.Header;
-            }
-            return result;
-        }
+   
     }
 }

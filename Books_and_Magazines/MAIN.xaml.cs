@@ -32,18 +32,22 @@ namespace Books_and_Magazines
             InitializeComponent();
 
             View();
+        }
 
-            for (int C = 0; C < minfo.Writers.Count; C++)
+        public void Search_View()
+        {
+            minfo = LoadFromBinaryFile(fileName);
+            foreach (var item in minfo.Writers)
             {
-                listView2.Items.Add(minfo.GetWriterFromList(C));
+                listView1.Items.Add(item);
             }
-            for (int C = 0; C < minfo.Books.Count; C++)
+            foreach (var item in minfo.Newspapers)
             {
-                listView3.Items.Add(minfo.GetBookFromList(C));
+                listView1.Items.Add(item);
             }
-            for (int C = 0; C < minfo.Newspapers.Count; C++)
+            foreach (var item in minfo.Books)
             {
-                listView4.Items.Add(minfo.GetNewspaperFromList(C));
+                listView1.Items.Add(item);
             }
         }
 
@@ -62,36 +66,61 @@ namespace Books_and_Magazines
             {
                 listView1.Items.Add(item);
             }
+
+            for (int C = 0; C < minfo.Writers.Count; C++)
+            {
+                listView2.Items.Add(minfo.GetWriterFromList(C));
+            }
+            for (int C = 0; C < minfo.Books.Count; C++)
+            {
+                listView3.Items.Add(minfo.GetBookFromList(C));
+            }
+            for (int C = 0; C < minfo.Newspapers.Count; C++)
+            {
+                listView4.Items.Add(minfo.GetNewspaperFromList(C));
+            }
         }
 
         private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            int index = (listView1.SelectedItem.GetType().ToString()).IndexOf('.');
-            string str = (listView1.SelectedItem.GetType().ToString()).Substring(index + 1);
-            switch(str)
+            string str = "";
+            if (this.Search.IsSelected == true)
+            { 
+                str = (listView1.SelectedItem.GetType().Name);
+            }            
+            if (this.Writers.IsSelected == true)
             {
-                case "Book":
-                    BookWindow wn = new BookWindow(this);
-                    wn.Show();
-                    this.WindowState = WindowState.Minimized;
-                    break;
-                case "Newspaper":
-                    NewspaperWindow wn1 = new NewspaperWindow(this);
-                    wn1.Show();
-                    this.WindowState = WindowState.Minimized;
-                    break;
-                case "Writer":
-                    
-                    this.WindowState = WindowState.Minimized;
-                    break;
-                case "Article":
-                    
-                    this.WindowState = WindowState.Minimized;
-                    break;
-                default:
-                    MessageBox.Show("Please, restart programme");
-                    break;
-            }
+                str = (listView2.SelectedItem.GetType().Name);
+            }                
+            if (this.Books.IsSelected == true)
+            {
+                str = (listView3.SelectedItem.GetType().Name);
+            }       
+            if (this.Newspapers.IsSelected == true)
+            {
+                str = (listView4.SelectedItem.GetType().Name);
+            }  
+                switch (str)
+                {
+                    case "Book":
+                        BookWindow wn = new BookWindow(this);
+                        wn.Show();
+                        this.WindowState = WindowState.Minimized;
+                        break;
+                    case "Newspaper":
+                        NewspaperWindow wn1 = new NewspaperWindow(this);
+                        wn1.Show();
+                        this.WindowState = WindowState.Minimized;
+                        break;
+                    case "Writer":
+                        WriterWindow wn2 = new WriterWindow(this);
+                        wn2.Show();
+                        this.WindowState = WindowState.Minimized;
+                        break;
+                    default:
+                        MessageBox.Show("Please, restart programme");
+                        break;
+                }
         }
 
         static void LoadToBinaryFile(object obj, string FileName)
@@ -100,8 +129,7 @@ namespace Books_and_Magazines
             using (Stream fStream = new FileStream(FileName, FileMode.Create, FileAccess.Write, FileShare.None))
             {
                 binFormat.Serialize(fStream, obj);
-            }
-            
+            }           
         }
 
         static Info LoadFromBinaryFile(string FileName)
@@ -192,12 +220,6 @@ namespace Books_and_Magazines
             LoadToBinaryFile(minfo, fileName);
         }
 
-
-        private void Search_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void Bookmarks_Click(object sender, RoutedEventArgs e)
         {
             
@@ -208,7 +230,7 @@ namespace Books_and_Magazines
             if (SearchBox.Text == String.Empty)
             {
                 listView1.Items.Clear();
-                View();
+                Search_View();
             }
             else
             {

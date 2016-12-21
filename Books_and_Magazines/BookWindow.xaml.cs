@@ -29,10 +29,18 @@ namespace Books_and_Magazines
         public BookWindow(MAIN w)
         {
             this.wn = w;
-            this.book = (Book)w.listView1.SelectedItem;
 
+            if(w.listView1.SelectedItem != null && w.listView1.SelectedItem is Book )
+            {
+                this.book = (Book)w.listView1.SelectedItem;
+            }
+            else
+            {
+                this.book = (Book)w.listView3.SelectedItem;
+            }
+            
             InitializeComponent();
-            if (this.book.FileSource != String.Empty && this.book.FileSource != null)
+            if (this.book.FileSource != String.Empty || this.book.FileSource != null)
             {
                 this.FileSourceBlock.Text = this.book.FileSource;
             }

@@ -36,17 +36,10 @@
             <Setter Property="Width" Value="150" />
         </Style>
 
-        <Style TargetType="ListViewItem" x:Key="WithImage">
-            <Setter Property="FontFamily" Value="Arial" />
-            <Setter Property="Foreground" Value="Black" />
-            <Setter Property="FontSize" Value="25" />
-            <EventSetter Event="MouseDoubleClick" Handler="ListViewItem_MouseDoubleClick" />
-        </Style>
-
     </Window.Resources>
     <Grid>
         <TabControl x:Name="tabControl" TabStripPlacement="Left">
-            <TabItem Header="Search" Template="{DynamicResource TabItemControlTemplate1}">
+            <TabItem x:Name="Search" Header="Search" Template="{DynamicResource TabItemControlTemplate1}">
                 <Grid>
                     <ListView x:Name="listView1" Margin="0,92,0,0" >
                         <ListView.View>
@@ -57,14 +50,14 @@
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <WrapPanel x:Name="Panel" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Margin="38,27,0,0" Width="347.177" >
-                        <Button x:Name="SearchBtn" Content="Search" Height="{Binding ElementName=Panel}" Click="Search_Click" />
-                        <TextBox x:Name="SearchBox" TextChanged="SearchBox_TextChanged" Height="{Binding ElementName=Panel}" TextWrapping="Wrap" Width="257"/>
-                    </WrapPanel>
+                    <Grid x:Name="Panel" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Margin="38,27,0,0" >
+                        <TextBox x:Name="SearchBox" TextChanged="SearchBox_TextChanged" Height="{Binding ElementName=Panel}" TextWrapping="Wrap" Width="350" />
+                        
+                    </Grid>
                     <Button x:Name="Bookmarks" BorderBrush="#FF7EB4EA" BorderThickness="3"  Content="Bookmarks" VerticalAlignment="Top" Margin="0,22,265,0" Height="{Binding ElementName=Panel}" HorizontalContentAlignment="Center" HorizontalAlignment="Right" Click="Bookmarks_Click"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Writers" Template="{DynamicResource TabItemControlTemplate1}">
+            <TabItem x:Name="Writers" Header="Writers" Template="{DynamicResource TabItemControlTemplate1}">
                 <Grid>
                     <ListView x:Name="listView2" Margin="0,92,0,0" >
                         <ListView.ItemTemplate>
@@ -89,13 +82,12 @@
 
                     </ListView>
                     <WrapPanel x:Name="Panel2" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Margin="38,27,0,0" Width="347.177" >
-                        <Button x:Name="SearchBtn2" Content="Search" Height="{Binding ElementName=Panel}" Click="Search_Click" />
                         <TextBox x:Name="SearchBox2" Height="{Binding ElementName=Panel}" TextWrapping="Wrap" Width="257"/>
                     </WrapPanel>
                     <Button x:Name="Add1" Click="Add1_Click" BorderBrush="#FF7EB4EA" BorderThickness="3"  Content="Add Writer" VerticalAlignment="Top" Margin="0,22,265,0" Height="{Binding ElementName=Panel}" HorizontalContentAlignment="Center" HorizontalAlignment="Right" />
                 </Grid>
             </TabItem>
-            <TabItem Header="Books" Template="{DynamicResource TabItemControlTemplate1}">
+            <TabItem x:Name="Books" Header="Books" Template="{DynamicResource TabItemControlTemplate1}">
                 <Grid>
                     <ListView x:Name="listView3" Margin="0,92,0,0" >
                         <ListView.ItemTemplate>
@@ -111,13 +103,12 @@
 
                     </ListView>
                     <WrapPanel x:Name="Panel3" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Margin="38,27,0,0" Width="347.177" >
-                        <Button x:Name="SearchBtn3" Content="Search" Height="{Binding ElementName=Panel}" Click="Search_Click" />
                         <TextBox x:Name="SearchBox3" Height="{Binding ElementName=Panel}" TextWrapping="Wrap" Width="257"/>
                     </WrapPanel>
                     <Button x:Name="Add2" Click="Add2_Click" BorderBrush="#FF7EB4EA" BorderThickness="3"  Content="Add Book" VerticalAlignment="Top" Margin="0,22,265,0" Height="{Binding ElementName=Panel}" HorizontalContentAlignment="Center" HorizontalAlignment="Right" />
                 </Grid>
             </TabItem>
-            <TabItem Header="Newspapers" Template="{DynamicResource TabItemControlTemplate1}">
+            <TabItem x:Name="Newspapers" Header="Newspapers" Template="{DynamicResource TabItemControlTemplate1}">
 
                 <Grid>
                     <ListView x:Name="listView4" Margin="0,92,0,0" >
@@ -134,15 +125,11 @@
 
                     </ListView>
                     <WrapPanel x:Name="Panel4" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Margin="38,27,0,0" Width="347.177" >
-                        <Button x:Name="SearchBtn4" Content="Search" Height="{Binding ElementName=Panel}" Click="Search_Click" />
                         <TextBox x:Name="SearchBox4" Height="{Binding ElementName=Panel}" TextWrapping="Wrap" Width="257"/>
                     </WrapPanel>
                     <Button x:Name="Add3" Click="Add3_Click" BorderBrush="#FF7EB4EA" BorderThickness="3"  Content="Add Newspaper" VerticalAlignment="Top" Margin="0,22,265,0" Height="{Binding ElementName=Panel}" HorizontalContentAlignment="Center" HorizontalAlignment="Right" />
                 </Grid>
 
-            </TabItem>
-            <TabItem Header="Articles" Template="{DynamicResource TabItemControlTemplate1}">
-                <Grid  />
             </TabItem>
         </TabControl>
 
