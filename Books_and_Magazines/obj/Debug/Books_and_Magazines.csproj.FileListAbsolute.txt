@@ -1,0 +1,38 @@
+c:\users\ігор\documents\visual studio 2015\Projects\Books_and_Magazines\Books_and_Magazines\bin\Debug\Books_and_Magazines.exe.config
+C:\Users\Ігор\Documents\Visual Studio 2015\Projects\Books_and_Magazines\Books_and_Magazines\bin\Debug\Books_and_Magazines.exe
+C:\Users\Ігор\Documents\Visual Studio 2015\Projects\Books_and_Magazines\Books_and_Magazines\bin\Debug\Books_and_Magazines.pdb
+C:\Users\Ігор\Documents\Visual Studio 2015\Projects\Books_and_Magazines\Books_and_Magazines\obj\Debug\Books_and_Magazines.csprojResolveAssemblyReference.cache
+C:\Users\Ігор\Documents\Visual Studio 2015\Projects\Books_and_Magazines\Books_and_Magazines\obj\Debug\MainWindow.g.cs
+C:\Users\Ігор\Documents\Visual Studio 2015\Projects\Books_and_Magazines\Books_and_Magazines\obj\Debug\App.g.cs
+C:\Users\Ігор\Documents\Visual Studio 2015\Projects\Books_and_Magazines\Books_and_Magazines\obj\Debug\Books_and_Magazines_MarkupCompile.cache
+C:\Users\Ігор\Documents\Visual Studio 2015\Projects\Books_and_Magazines\Books_and_Magazines\obj\Debug\Books_and_Magazines_MarkupCompile.lref
+C:\Users\Ігор\Documents\Visual Studio 2015\Projects\Books_and_Magazines\Books_and_Magazines\obj\Debug\MainWindow.baml
+C:\Users\Ігор\Documents\Visual Studio 2015\Projects\Books_and_Magazines\Books_and_Magazines\obj\Debug\Books_and_Magazines.g.resources
+C:\Users\Ігор\Documents\Visual Studio 2015\Projects\Books_and_Magazines\Books_and_Magazines\obj\Debug\Books_and_Magazines.Properties.Resources.resources
+C:\Users\Ігор\Documents\Visual Studio 2015\Projects\Books_and_Magazines\Books_and_Magazines\obj\Debug\Books_and_Magazines.csproj.GenerateResource.Cache
+C:\Users\Ігор\Documents\Visual Studio 2015\Projects\Books_and_Magazines\Books_and_Magazines\obj\Debug\Books_and_Magazines.exe
+C:\Users\Ігор\Documents\Visual Studio 2015\Projects\Books_and_Magazines\Books_and_Magazines\obj\Debug\Books_and_Magazines.pdb
+D:\28.10\Projects\Books_and_Magazines\Books_and_Magazines\bin\Debug\Books_and_Magazines.exe.config
+D:\28.10\Projects\Books_and_Magazines\Books_and_Magazines\obj\Debug\Books_and_Magazines.exe
+D:\28.10\Projects\Books_and_Magazines\Books_and_Magazines\obj\Debug\Books_and_Magazines.pdb
+D:\28.10\Projects\Books_and_Magazines\Books_and_Magazines\obj\Debug\Books_and_Magazines.csprojResolveAssemblyReference.cache
+D:\28.10\Projects\Books_and_Magazines\Books_and_Magazines\obj\Debug\MainWindow.g.cs
+D:\28.10\Projects\Books_and_Magazines\Books_and_Magazines\obj\Debug\App.g.cs
+D:\28.10\Projects\Books_and_Magazines\Books_and_Magazines\obj\Debug\Books_and_Magazines_MarkupCompile.cache
+D:\28.10\Projects\Books_and_Magazines\Books_and_Magazines\obj\Debug\Books_and_Magazines_MarkupCompile.lref
+D:\28.10\Projects\Books_and_Magazines\Books_and_Magazines\bin\Debug\Books_and_Magazines.exe
+D:\28.10\Projects\Books_and_Magazines\Books_and_Magazines\bin\Debug\Books_and_Magazines.pdb
+D:\28.10\Projects\Books_and_Magazines\Books_and_Magazines\obj\Debug\MainWindow.baml
+D:\28.10\Projects\Books_and_Magazines\Books_and_Magazines\obj\Debug\Books_and_Magazines.g.resources
+D:\28.10\Projects\Books_and_Magazines\Books_and_Magazines\obj\Debug\Books_and_Magazines.Properties.Resources.resources
+D:\28.10\Projects\Books_and_Magazines\Books_and_Magazines\obj\Debug\Books_and_Magazines.csproj.GenerateResource.Cache
+D:\28.10\Projects\Books_and_Magazines\Books_and_Magazines\obj\Debug\App.baml
+D:\28.10\Projects\Books_and_Magazines\Books_and_Magazines\obj\Debug\Dictionary.baml
+D:\28.10\Projects\Books_and_Magazines\Books_and_Magazines\obj\Debug\MAIN.g.cs
+D:\28.10\Projects\Books_and_Magazines\Books_and_Magazines\obj\Debug\MAIN.baml
+D:\28.10\Projects\Books_and_Magazines\Books_and_Magazines\obj\Debug\BookWindow.g.cs
+D:\28.10\Projects\Books_and_Magazines\Books_and_Magazines\obj\Debug\BookWindow.baml
+D:\28.10\Projects\Books_and_Magazines\Books_and_Magazines\obj\Debug\NewspaperWindow.g.cs
+D:\28.10\Projects\Books_and_Magazines\Books_and_Magazines\obj\Debug\NewspaperWindow.baml
+D:\28.10\Projects\Books_and_Magazines\Books_and_Magazines\obj\Debug\WindowAddObject.g.cs
+D:\28.10\Projects\Books_and_Magazines\Books_and_Magazines\obj\Debug\WindowAddObject.baml

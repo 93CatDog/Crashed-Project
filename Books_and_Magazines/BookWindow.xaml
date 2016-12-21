@@ -1,0 +1,17 @@
+﻿<Window x:Class="Books_and_Magazines.BookWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Books_and_Magazines"
+        mc:Ignorable="d"
+        Title="BookWindow" Icon="icon.png" WindowStartupLocation="CenterScreen" Width="1200">
+    <Grid>
+        <Button x:Name="AddToBookmarksBtn" Content="Add to Bookmarks" HorizontalAlignment="Left" Margin="1018,424,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="AddImageBtn" Content="Button" HorizontalAlignment="Left" Margin="42,316,0,0" VerticalAlignment="Top" Width="171" Height="45"/>
+        <Image x:Name="image"  HorizontalAlignment="Left" Height="285" Margin="27,10,0,0" VerticalAlignment="Top" Width="285"/>
+        <TextBlock x:Name="FileSourceBlock" HorizontalAlignment="Left" Margin="388,107,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+        <Button x:Name="OpenBtn" Content="Open" Click="OpenBtn_Click" HorizontalAlignment="Left" Margin="580,93,0,0" VerticalAlignment="Top" Width="75"/>
+
+    </Grid>
+</Window>

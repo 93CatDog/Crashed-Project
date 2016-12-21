@@ -1,0 +1,42 @@
+﻿<Window x:Class="Books_and_Magazines.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Books_and_Magazines"
+        mc:Ignorable="d"
+        Height="750" Width="1200" Icon="icon.png" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Title="Library1" WindowState="Normal">
+    <Grid Cursor="Hand">
+        <Grid.Background>
+            <ImageBrush ImageSource="pack://application:,,,/Books_and_Magazines;component/Books-Background-1.jpg" />
+        </Grid.Background>
+        <Button x:Name="button1" Click="button1_Click" Background="Transparent" Content="Click for START" VerticalAlignment="Top" HorizontalAlignment="Left"  FontFamily="Bradley Hand ITC" FontSize="40" Style="{DynamicResource Button_Book}" Margin="241.5,76.5,0,0"/>
+        
+        <TextBlock x:Name="textBlock1" FontSize="20" Margin="171.833,215,0,181" TextWrapping="Wrap" Text="The best programme 
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   ...Powered by Igor and Ivan" FontFamily="Bradley Hand ITC" HorizontalAlignment="Left" Width="402"/>
+        <Grid Background="Transparent" Height="18.75" Margin="-0.25,-1.5,-0.25,0" VerticalAlignment="Top">
+            <Button x:Name="button" Background="Transparent" HorizontalAlignment="Right" Margin="0,1.832,0.083,0.084" Width="16.833" Style="{DynamicResource Button_Book}">
+                <Border BorderBrush="Black" BorderThickness="1" Height="2.76" Width="12.025" Background="Black"/>
+            </Button>
+        </Grid>
+        <Button x:Name="Close"  Click="button2_Click" Background="Transparent" Content="Click for CLOSE" VerticalAlignment="Top" HorizontalAlignment="Left"  FontFamily="Bradley Hand ITC" FontSize="40" Style="{DynamicResource Button_Book}" Margin="624,215,0,0"/>
+
+
+        
+    </Grid>
+</Window>
