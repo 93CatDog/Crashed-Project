@@ -45,39 +45,6 @@ namespace Books_and_Magazines
             }
         }
 
-        public Writer GetWriterFromList(int index)
-        {
-            try
-            {
-                return this.mWriters.ElementAt<Writer>(index);
-            }
-            catch (IndexOutOfRangeException) { return null; }
-        }
-        public Publishing GetPublishingFromList(int index)
-        {
-            try
-            {
-                return this.mPublishings.ElementAt<Publishing>(index);
-            }
-            catch (IndexOutOfRangeException) { return null; }
-        }
-        public Book GetBookFromList(int index)
-        {
-            try
-            {
-                return this.mBooks.ElementAt<Book>(index);
-            }
-            catch (IndexOutOfRangeException) { return null; }
-        }
-        public Newspaper GetNewspaperFromList(int index)
-        {
-            try
-            {
-                return this.mNewspapers.ElementAt<Newspaper>(index);
-            }
-            catch (IndexOutOfRangeException) { return null; }
-        }
-
        
         public void Add_Books(Book book)
         {

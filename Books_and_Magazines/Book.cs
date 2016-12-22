@@ -223,7 +223,7 @@ namespace Books_and_Magazines
         }
         public override string ToString()
         {
-            return (this.Name + " " + this.Annotation + " " + this.Direction + " " + this.Date + " " + this.Publishing.Name + "\n");
+            return (this.Name);//+ " " + this.Annotation + " " + this.Direction + " " + this.Date + " " + this.Publishing.Name + "\n");
         }
 
         public void Add_Writer(Writer wrt)

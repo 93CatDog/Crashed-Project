@@ -115,14 +115,6 @@ namespace Books_and_Magazines
                 return this.mBooksList;
             }
         }
-        public Book GetBookFromList(int index)
-        {
-            try
-            {
-                return this.mBooksList.ElementAt<Book>(index);
-            }
-            catch (IndexOutOfRangeException) { return null; }
-        }
         public string NamesFromBooksList
         {
             get
@@ -140,7 +132,7 @@ namespace Books_and_Magazines
                 {
                     for (var C = 0; C < 4; C++)
                     {
-                        str += GetBookFromList(C).Name + ", ";
+                        str += BooksList.ElementAt(C).Name + ", ";
                     }
                     str = str.Remove(str.Length - 2);
                     str = str + "...";
@@ -159,6 +151,10 @@ namespace Books_and_Magazines
             this.mDeathDate = deathdate;
             this.mBooksList = new List<Book>();
            
+        }
+
+        public Writer()
+        {
         }
 
         public override string ToString()

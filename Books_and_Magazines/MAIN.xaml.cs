@@ -69,15 +69,15 @@ namespace Books_and_Magazines
 
             for (int C = 0; C < minfo.Writers.Count; C++)
             {
-                listView2.Items.Add(minfo.GetWriterFromList(C));
+                listView2.Items.Add(minfo.Writers.ElementAt(C));
             }
             for (int C = 0; C < minfo.Books.Count; C++)
             {
-                listView3.Items.Add(minfo.GetBookFromList(C));
+                listView3.Items.Add(minfo.Books.ElementAt(C));
             }
             for (int C = 0; C < minfo.Newspapers.Count; C++)
             {
-                listView4.Items.Add(minfo.GetNewspaperFromList(C));
+                listView4.Items.Add(minfo.Newspapers.ElementAt(C));
             }
         }
 
