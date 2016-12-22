@@ -1,0 +1,158 @@
+﻿<Window x:Class="Books_and_Magazines.MAIN"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Books_and_Magazines"
+        mc:Ignorable="d"
+        Title="MAIN" Icon="icon.png" WindowStartupLocation="CenterScreen" Width="1200">
+    <Window.Resources>
+        <Style TargetType="TabItem">
+            <Setter Property="Height" Value="60" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="FontSize" Value="30" />
+            <Setter Property="FontFamily" Value="Bradley Hand ITC"/>
+            <Setter Property="BorderBrush" Value="Transparent" />
+        </Style>
+
+        <Style TargetType="ListViewItem">
+            <Setter Property="FontFamily" Value="Arial" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="FontSize" Value="18" />
+            <EventSetter Event="MouseDoubleClick" Handler="ListViewItem_MouseDoubleClick"/>
+        </Style>
+
+        <Style TargetType="Grid">
+            <Setter Property="Background" Value="White" />
+        </Style>
+
+        <Style TargetType="TabControl">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="DarkGray" />
+        </Style>
+
+        <Style TargetType="Image" x:Key="ImageForItem">
+            <Setter Property="Height" Value="150" />
+            <Setter Property="Width" Value="150" />
+        </Style>
+
+    </Window.Resources>
+    <Grid>
+        <TabControl x:Name="tabControl" TabStripPlacement="Left">
+            <TabItem x:Name="Search" Header="Search" Template="{DynamicResource TabItemControlTemplate1}">
+                <Grid>
+                    <ListView x:Name="listView1" Margin="0,92,0,0" >
+                        <ListView.View>
+                            <GridView >
+                                <GridViewColumn x:Name="Column1" Width="280" DisplayMemberBinding="{Binding Path=Name}" Header="Name" />
+                                <GridViewColumn x:Name="Column2" Width="140" DisplayMemberBinding="{Binding Path=Type}" Header="Type" />
+                                <GridViewColumn x:Name="Column3" Width="600" DisplayMemberBinding="{Binding Path=About}" Header="About" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Grid x:Name="Panel" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Margin="38,27,0,0" >
+                        <TextBox x:Name="SearchBox" TextChanged="SearchBox_TextChanged" Height="{Binding ElementName=Panel}" TextWrapping="Wrap" Width="350" />
+                        
+                    </Grid>
+                    <Button x:Name="Bookmarks" BorderBrush="#FF7EB4EA" BorderThickness="3"  Content="Bookmarks" VerticalAlignment="Top" Margin="0,22,265,0" Height="{Binding ElementName=Panel}" HorizontalContentAlignment="Center" HorizontalAlignment="Right" Click="Bookmarks_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="Writers" Header="Writers" Template="{DynamicResource TabItemControlTemplate1}">
+                <Grid>
+                    <ListView x:Name="listView2" Margin="0,92,0,0" >
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Grid.Column="0" Style="{StaticResource ImageForItem}" Source="{Binding Path=ImageSource}" />
+                                    <TextBlock Grid.Column="1" Text="{Binding Path=Name}" FontSize="25" FontFamily="Bradley Hand ITC" />
+                                    <Grid Grid.Column="2">
+                                        <TextBlock Padding="20,0,0,0" Text="{Binding Path=AboutItem}" />
+                                            
+                                      
+                                    </Grid>
+                                    
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+
+                    </ListView>
+                    <WrapPanel x:Name="Panel2" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Margin="38,27,0,0" Width="347.177" >
+                        <TextBox x:Name="SearchBox2" Height="{Binding ElementName=Panel}" TextWrapping="Wrap" Width="257"/>
+                    </WrapPanel>
+                    <Button x:Name="Add1" Click="Add1_Click" BorderBrush="#FF7EB4EA" BorderThickness="3"  Content="Add Writer" VerticalAlignment="Top" Margin="0,22,265,0" Height="{Binding ElementName=Panel}" HorizontalContentAlignment="Center" HorizontalAlignment="Right" />
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="Books" Header="Books" Template="{DynamicResource TabItemControlTemplate1}">
+                <Grid>
+                    <ListView x:Name="listView3" Margin="0,92,0,0" >
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid>
+                                        <Image Style="{StaticResource ImageForItem}" Source="{Binding Path=ImageSource}" />
+                                    </Grid>
+                                    <TextBlock  Text="{Binding Path=Name}" />
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+
+                    </ListView>
+                    <WrapPanel x:Name="Panel3" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Margin="38,27,0,0" Width="347.177" >
+                        <TextBox x:Name="SearchBox3" Height="{Binding ElementName=Panel}" TextWrapping="Wrap" Width="257"/>
+                    </WrapPanel>
+                    <Button x:Name="Add2" Click="Add2_Click" BorderBrush="#FF7EB4EA" BorderThickness="3"  Content="Add Book" VerticalAlignment="Top" Margin="0,22,265,0" Height="{Binding ElementName=Panel}" HorizontalContentAlignment="Center" HorizontalAlignment="Right" />
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="Newspapers" Header="Newspapers" Template="{DynamicResource TabItemControlTemplate1}">
+
+                <Grid>
+                    <ListView x:Name="listView4" Margin="0,92,0,0" >
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid>
+                                        <Image Style="{StaticResource ImageForItem}" Source="{Binding Path=ImageSource}" />
+                                    </Grid>
+                                    <TextBlock  Text="{Binding Path=Name}" />
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+
+                    </ListView>
+                    <WrapPanel x:Name="Panel4" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Margin="38,27,0,0" Width="347.177" >
+                        <TextBox x:Name="SearchBox4" Height="{Binding ElementName=Panel}" TextWrapping="Wrap" Width="257"/>
+                    </WrapPanel>
+                    <Button x:Name="Add3" Click="Add3_Click" BorderBrush="#FF7EB4EA" BorderThickness="3"  Content="Add Newspaper" VerticalAlignment="Top" Margin="0,22,265,0" Height="{Binding ElementName=Panel}" HorizontalContentAlignment="Center" HorizontalAlignment="Right" />
+                </Grid>
+
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>
+
+    <!--
+    
+    <GridViewColumn Width="200" DisplayMemberBinding="{Binding Path=BooksList.Count}" Header="Count of Books" />
+    
+        -->
+    
+<!-- Template="{DynamicResource TabItemControlTemplate1}" 
+    
+    <TabItem Header="TabItem1" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,57,-179,-57" Template="{DynamicResource TabItemControlTemplate1}" RenderTransformOrigin="0.839,2.968">
+                <TabItem.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="90"/>
+                        <TranslateTransform X="-67.559" Y="-30.964"/>
+                    </TransformGroup>
+                </TabItem.RenderTransform>
+            </TabItem>
+    
+    -->
