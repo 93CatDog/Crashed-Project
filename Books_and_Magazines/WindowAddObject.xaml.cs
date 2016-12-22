@@ -25,10 +25,13 @@ namespace Books_and_Magazines
         private char[] separator = new char[] { '1', '2', '3', '4', '5', '5', '6', '7', '8', '9', '0', ',', '.', '!', '?' };
         Writer Writer_1 = new Writer();
         Info tmp_info = new Info();
+        MAIN wn;
         List<TextBlock> TextBlockList = new List<TextBlock>();
-        public WindowAddObject(string type)
+
+        public WindowAddObject(MAIN w, string type)
         {
             InitializeComponent();
+            this.wn = w;
             switch (type)
             {
                 case "Writer":
@@ -59,7 +62,6 @@ namespace Books_and_Magazines
                 filename = image.FileName;
             }
             Writer_1.ImageSource = WrtPhoto.Source.ToString();
-            //MessageBox.Show(Writer_1.ImageSource);
         }
 
         private void Books_TextChanged(object sender, TextChangedEventArgs e)
@@ -68,10 +70,6 @@ namespace Books_and_Magazines
             {
                 Books_List.Items.Clear();
                 Books_List.Visibility = Visibility.Hidden;
-                /*foreach(var item in tmp_info.Books)
-                {
-                    Books_List.Items.Add(item);
-                }*/
             }
             else
             {
@@ -88,7 +86,7 @@ namespace Books_and_Magazines
             }
         }
 
-        private void Save_btn_Click(object sender, RoutedEventArgs e)
+        private void Save_Wrt_btn_Click(object sender, RoutedEventArgs e)
         {
             string[] tmp1 = WrtName.Text.Split(separator);
             string[] tmp2 = WrtName.Text.Split(separator);
@@ -97,8 +95,8 @@ namespace Books_and_Magazines
             try
             {
                 year= Convert.ToInt32(WrtBirthDate.Text);
-                year1 = Convert.ToInt32(WrtDeathDate.Text);
-                if (year > DateTime.Now.Year || year < 0 || year1 > DateTime.Now.Year || year1 < 0 ||year>year1)
+                //year1 = Convert.ToInt32(WrtDeathDate.Text);
+                if (year > DateTime.Now.Year || year < 0 /*|| year1 > DateTime.Now.Year || year1 < 0 ||year>year1*/)
                     throw new DateException();
             }
             catch(FormatException)
@@ -109,7 +107,18 @@ namespace Books_and_Magazines
             {
                 MessageBox.Show("Uncorrect Birthdate");
             }
-            //if (WrtName.Text.)
+            if(( tmp1.GetLength(0)==1) && tmp2.GetLength(0) == 1)
+            {
+                Writer_1.Name = WrtName.Text;
+                Writer_1.Surname = WrtSurname.Text;
+                Writer_1.BirthDate = Convert.ToInt32(WrtBirthDate.Text);
+               // Writer_1.DeathDate = Convert.ToInt32(WrtDeathDate.Text);
+                Writer_1.Biography = Biography.Text;
+                tmp_info.Add_Writers(Writer_1);
+                tmp_info.LoadToBinaryFile(filename);
+                this.Close();
+                this.wn.Show();
+            }
         }
 
         /*private void ListBoxItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)

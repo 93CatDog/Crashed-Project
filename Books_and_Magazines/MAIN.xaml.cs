@@ -251,19 +251,19 @@ namespace Books_and_Magazines
 
         private void Add1_Click(object sender, RoutedEventArgs e)
         {
-            this.wn = new WindowAddObject("Writer");
+            this.wn = new WindowAddObject(this, "Writer");
             wn.Show();
         }
 
         private void Add2_Click(object sender, RoutedEventArgs e)
         {
-            this.wn = new WindowAddObject("Book");
+            this.wn = new WindowAddObject(this, "Book");
             wn.Show();
         }
 
         private void Add3_Click(object sender, RoutedEventArgs e)
         {
-            this.wn = new WindowAddObject("Newspaper");
+            this.wn = new WindowAddObject(this, "Newspaper");
             wn.Show();
         }
     }

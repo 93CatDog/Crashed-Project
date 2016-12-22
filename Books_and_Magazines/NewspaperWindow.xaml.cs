@@ -26,6 +26,7 @@ namespace Books_and_Magazines
 
         public NewspaperWindow(MAIN w)
         {
+            InitializeComponent();
             this.wn = w;
             
             if (w.listView1.SelectedItem != null && w.listView1.SelectedItem is Newspaper)
@@ -37,7 +38,7 @@ namespace Books_and_Magazines
                 newspaper = (Newspaper)w.listView4.SelectedItem;
             }
 
-            InitializeComponent();
+            
             if (newspaper.HyperLink != String.Empty || newspaper.HyperLink != null)
             {
                 this.HyperlinkBlock.Text = newspaper.HyperLink;

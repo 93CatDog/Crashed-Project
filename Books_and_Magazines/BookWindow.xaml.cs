@@ -29,6 +29,7 @@ namespace Books_and_Magazines
 
         public BookWindow(MAIN w)
         {
+            InitializeComponent();
             this.wn = w;
 
             if(w.listView1.SelectedItem != null && w.listView1.SelectedItem is Book )
@@ -39,11 +40,13 @@ namespace Books_and_Magazines
             {
                 this.book = (Book)w.listView3.SelectedItem;
             }
+            this.image.Source = new BitmapImage(new Uri(this.book.ImageSource)); 
+
             
-            InitializeComponent();
+
             if (this.book.FileSource != String.Empty || this.book.FileSource != null)
             {
-                this.FileSourceBlock.Text = this.book.FileSource;
+                
             }
             else
             {
@@ -52,7 +55,7 @@ namespace Books_and_Magazines
             this.Source = this.Source.Remove(this.Source.LastIndexOf("Debug") - 5);
             this.Source = this.Source.Replace('\\', '/') + "/" + this.book.FileSource;
 
-            test();
+            //test();
         }
 
         private void OpenBtn_Click(object sender, RoutedEventArgs e)

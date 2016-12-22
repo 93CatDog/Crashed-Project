@@ -35,12 +35,11 @@ namespace Books_and_Magazines
     {
         private string mName;
         private string mAnnotation;
-        private string mDirection;
+        private string mDirection; //
         private int mDate;
         private List<Writer> mWritersList;
         private Publishing mPublishing;
         private string mImageSource = "pack://application:,,,/Books_and_Magazines;component/DefaultBook.png";
-        private bool mAccess;
         private string mFileSource;                                     
 
 
@@ -122,17 +121,7 @@ namespace Books_and_Magazines
                 this.mPublishing = value;
             }
         }
-        public bool Access
-        {
-            get
-            {
-                return this.mAccess;
-            }
-            set
-            {
-                this.mAccess = value;
-            }
-        }
+       
         public string ImageSource
         {
             get

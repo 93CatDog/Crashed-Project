@@ -29,6 +29,7 @@ namespace Books_and_Magazines
 
         public WriterWindow(MAIN w)
         {
+            InitializeComponent();
             this.wn = w;
 
             if (w.listView1.SelectedItem != null && w.listView1.SelectedItem is Writer)
@@ -40,7 +41,7 @@ namespace Books_and_Magazines
                 writer = (Writer)w.listView2.SelectedItem;
             }
 
-            InitializeComponent();
+            
         }
 
 

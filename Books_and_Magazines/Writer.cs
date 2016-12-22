@@ -45,6 +45,10 @@ namespace Books_and_Magazines
             {
                 return this.mBiography;
             }
+            set
+            {
+                this.mBiography = value;
+            }
         }
         public string Years
         {
