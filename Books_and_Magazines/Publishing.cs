@@ -12,9 +12,10 @@ namespace Books_and_Magazines
         private string mName;
         private string mLocation;   
         private int mFoundation;
+        private string mHyperLink;
         private string mInfo;
-        private List<Newspaper> mNewspapersList;
-        private List<Book> mBooksList;
+        private List<Newspaper> mNewspapersList = new List<Newspaper>();
+        private List<Book> mBooksList = new List<Book>();
 
         public bool Compare(string text)
         {
@@ -23,6 +24,17 @@ namespace Books_and_Magazines
             return false;
         }
 
+        public string HyperLink
+        {
+            get
+            {
+                return this.mHyperLink;
+            }
+            set
+            {
+                this.mHyperLink = value;
+            }
+        }
         public string Name
         {
             get
@@ -76,58 +88,7 @@ namespace Books_and_Magazines
                 this.mFoundation = value;
             }
         }
-        public string this[string data]
-        {
-            get
-            {
-                try
-                {
-                    int number = Int32.Parse(data);
-                    if (data == String.Empty)
-                        return "This field can't be empty!";
-                    if (number > 0 && number < DateTime.Now.Year)
-                        return null;
-                    else
-                        return "The foundation year can't be negative and higher than today's date";
-                }
-                catch (FormatException)
-                {
-                    return "Uncorrect format of year";
-                }
-                catch (OverflowException)
-                {
-                    return "The foundation year can't be negative and higher than today's date";
-                }
-            }
-        }
-        //public Book  this[int index]
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            return this.mBooksList.ElementAt(index);
-        //        }
-        //        catch(IndexOutOfRangeException)
-        //        {
-        //            return null;
-        //        }
-        //    }
-        //}
-        //public Newspaper this[int index, int a]
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            return this.mNewspapersList.ElementAt(index);
-        //        }
-        //        catch (IndexOutOfRangeException)
-        //        {
-        //            return null;
-        //        }
-        //    }
-        //}
+        
         public List<Book> BooksList
         {
             get
@@ -144,13 +105,10 @@ namespace Books_and_Magazines
         }
         public Publishing()
         {
-            this.Name = null; ;
-            this.Foundation = 0;
-            this.mInfo = null;
-            this.mLocation = null;
-            this.mNewspapersList = new List<Newspaper>();
-            this.mBooksList = new List<Book>();
+
         }
+
+        /*
         public Publishing(string Name, string Location, int Foundation, string Info )
         {
             this.Name = Name;
@@ -160,6 +118,8 @@ namespace Books_and_Magazines
             this.mNewspapersList = new List<Newspaper>();
             this.mBooksList = new List<Book>();
         }
+        */
+
         public void Add_Book(Book bk)
         {
             this.mBooksList.Add(bk);

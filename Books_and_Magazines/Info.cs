@@ -15,6 +15,7 @@ namespace Books_and_Magazines
         private List<Publishing> mPublishings = new List<Publishing>();
         private List<Book> mBooks = new List<Book>();
         private List<Newspaper> mNewspapers = new List<Newspaper>();
+        private List<Issue> mIssues = new List<Issue>();
 
         public List<Writer> Writers
         {
@@ -44,8 +45,18 @@ namespace Books_and_Magazines
                 return this.mNewspapers;
             }
         }
+        public List<Issue> Issues
+        {
+            get
+            {
+                return this.mIssues;
+            }
+            set
+            {
+                this.mIssues = value;
+            }
+        }
 
-       
         public void Add_Books(Book book)
         {
             this.mBooks.Add(book);
@@ -62,21 +73,9 @@ namespace Books_and_Magazines
         {
             this.mNewspapers.Add(nsp);  
         }
-
-        public override string ToString()
+        public void Add_Issues(Issue iss)
         {
-            string all_information = null;
-            string info_writers = null, info_publishings = null;
-            foreach (var item in mWriters)
-            {
-                info_writers += item.ToString();
-            }
-            foreach (var item in mPublishings)
-            {
-                info_publishings += item.ToString();
-            }
-            all_information = info_writers + info_publishings;
-            return all_information;
+            this.mIssues.Add(iss);
         }
 
         public void LoadToBinaryFile(string FileName)

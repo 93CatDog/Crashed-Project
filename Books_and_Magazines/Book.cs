@@ -35,9 +35,9 @@ namespace Books_and_Magazines
     {
         private string mName;
         private string mAnnotation;
-        private string mDirection; //
+        private string mGenre; //
         private int mDate;
-        private List<Writer> mWritersList;
+        private List<Writer> mWritersList = new List<Writer>();
         private Publishing mPublishing;
         private string mImageSource = "pack://application:,,,/Books_and_Magazines;component/DefaultBook.png";
         private string mFileSource;                                     
@@ -65,15 +65,15 @@ namespace Books_and_Magazines
                 this.mAnnotation = value;
             }
         }
-        public string Direction
+        public string Genre
         {
             get
             {
-                return this.mDirection;
+                return this.mGenre;
             }
             set
             {
-                this.mDirection = value;
+                this.mGenre = value;
             }
         }
         public int Date
@@ -145,10 +145,9 @@ namespace Books_and_Magazines
             }
         }
 
-
         public bool Compare(string text)
         {
-            if (Name.Contains(text) || Direction.Contains(text) || Date.ToString().Contains(text))
+            if (Name.Contains(text) || Genre.Contains(text) || Date.ToString().Contains(text))
                 return true;
             return false;
         }
@@ -194,22 +193,16 @@ namespace Books_and_Magazines
             }
         }
 
+        /*
         public Book(string Name, string Direction, string Annotation, int Date)
         {
             this.Name = Name;
-            this.Direction = Direction;
+            this.Genre = Direction;
             this.Annotation = Annotation;
             this.Date = Date;
-            this.mWritersList = new List<Writer>();
         }
-        public Book()
-        {
-            this.Name = null;
-            this.Direction = null;
-            this.Date = 0;
-            this.Publishing = null;
-            this.mWritersList = new List<Writer>();
-        }
+        */
+
         public override string ToString()
         {
             return (this.Name);//+ " " + this.Annotation + " " + this.Direction + " " + this.Date + " " + this.Publishing.Name + "\n");
@@ -227,6 +220,7 @@ namespace Books_and_Magazines
             pbl.Add_Book(this);
         }
 
+        /*
         public string Print_Writers()
         {
             string result = null;
@@ -236,6 +230,6 @@ namespace Books_and_Magazines
             }
             return result;
         }
-
+        */
     }
 }

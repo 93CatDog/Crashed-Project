@@ -56,6 +56,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DateException.cs" />
+    <Compile Include="Issue.cs" />
     <Compile Include="WriterWindow.xaml.cs">
       <DependentUpon>WriterWindow.xaml</DependentUpon>
     </Compile>

@@ -166,7 +166,7 @@ namespace Books_and_Magazines
 
             War.Annotation = "Книга для врослых";
             War.Date = 1939;
-            War.Direction = "Тематика Войны";
+            War.Genre = "Тематика Войны";
             War.Name = "Начало 1-й Мировой войны";
             War.Add_Publishing(Info_Press);
             War.Add_Writer(Ivan_Ivanov);
@@ -175,14 +175,14 @@ namespace Books_and_Magazines
 
             Peace.Annotation = "Книга для всех";
             Peace.Date = 1967;
-            Peace.Direction = "Про мир";
+            Peace.Genre = "Про мир";
             Peace.Name = "Мир для всех!";
             Peace.Add_Publishing(Info_Press);
             Peace.Add_Writer(Ivan_Ivanov);
 
             Master.Annotation = "От и до..";
             Master.Date = 1966;
-            Master.Direction = "Фантастика";
+            Master.Genre = "Фантастика";
             Master.Name = "Мастер и Маргарита";
             Master.FileSource = "Bulgakov-Master and Margarita.pdf";
             Master.Add_Publishing(Info_Press);

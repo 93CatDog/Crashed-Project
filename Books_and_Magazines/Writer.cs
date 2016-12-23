@@ -15,7 +15,7 @@ namespace Books_and_Magazines
         private int mBirthDate;
         private int mDeathDate;
         private string mImageSource = "pack://application:,,,/Books_and_Magazines;component/DefaultWriter.png";
-        private List<Book> mBooksList;
+        private List<Book> mBooksList = new List<Book>();
 
         public string Name
         {
@@ -143,23 +143,18 @@ namespace Books_and_Magazines
                 }
                 return str;
             }
-        }
-       
+        }      
 
+        /*
         public Writer(string name, string surname, int birthdate, int deathdate)
         {
             this.mName = name;
             this.mSurname = surname;
             this.mBiography = null;
             this.mBirthDate = birthdate;
-            this.mDeathDate = deathdate;
-            this.mBooksList = new List<Book>();
-           
+            this.mDeathDate = deathdate;       
         }
-
-        public Writer()
-        {
-        }
+        */
 
         public override string ToString()
         {
@@ -178,6 +173,7 @@ namespace Books_and_Magazines
             this.mBooksList.Add(bk);
         }
 
+        /*
         public string Print_Books()
         {
             string result = null;
@@ -187,6 +183,6 @@ namespace Books_and_Magazines
             }
             return result;
         }
-   
+        */
     }
 }

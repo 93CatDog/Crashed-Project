@@ -13,10 +13,8 @@ namespace Books_and_Magazines
         private int mStart_year;
         private string mHyperLink;
         private string mImageSource = "pack://application:,,,/Books_and_Magazines;component/DefaultNewspaper.jpg";
-        private bool mAccess;
-
-        private Publishing mPublishing;
-        
+        private List<Issue> mIssuesList;
+        private Publishing mPublishing;       
 
         public string Name
         {
@@ -76,17 +74,6 @@ namespace Books_and_Magazines
                 this.mImageSource = "pack://application:,,,/Books_and_Magazines;component/" + value;
             }
         }
-        public bool Access
-        {
-            get
-            {
-                return this.mAccess;
-            }
-            set
-            {
-                this.mAccess = value;
-            }
-        }
 
         public bool Compare(string text)
         {
@@ -95,30 +82,6 @@ namespace Books_and_Magazines
             return false;
         }
 
-        public string this[string data]
-        {
-            get
-            {
-                try
-                {
-                    int number = Int32.Parse(data);
-                    if (data == String.Empty)
-                        return "This field can't be empty!";
-                    if (number > 700 && number < DateTime.Now.Year)
-                        return null;
-                    else
-                        return "The start year can't be lower than XIII century and higher than today's date";
-                }
-                catch (FormatException)
-                {
-                    return "Uncorrect format of year";
-                }
-                catch (OverflowException)
-                {
-                    return "The start year can't be lower than XIII century and higher than today's date";
-                }
-            }
-        }
         public Publishing Publishing
         {
             get
@@ -142,18 +105,30 @@ namespace Books_and_Magazines
             this.Publishing = pb;
             pb.Add_Newspaper(this);
         }
-        public Newspaper(string Name, int Start_year)
+
+        public List<Issue> IssuesList
         {
-            this.mName = Name;
-            this.Publishing = null;
-            this.Start_year = Start_year;
+            get
+            {
+                try
+                {
+                    return this.mIssuesList;
+                }
+                catch (NullReferenceException)
+                {
+                    return null;
+                }
+            }
+            set
+            {
+                this.mIssuesList = value;
+            }
         }
-        public Newspaper()
+        public void Add_Issue(Issue iss)
         {
-            this.mName = null;
-            this.mPublishing = null;
-            this.mStart_year = 0;
+            this.mIssuesList.Add(iss);
         }
+ 
         public override string ToString()
         {
             return (this.Name + " " + " " + this.Publishing.ToString() + " " + this.Start_year);
