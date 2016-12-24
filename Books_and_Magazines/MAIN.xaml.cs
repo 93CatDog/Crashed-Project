@@ -27,9 +27,9 @@ namespace Books_and_Magazines
 
         public MAIN()
         {
-            Change_File();
-
             InitializeComponent();
+
+            //Change_File();
 
             View();
         }
@@ -220,7 +220,7 @@ namespace Books_and_Magazines
             //LoadToBinaryFile(minfo, fileName);
         }
 
-        private void Bookmarks_Click(object sender, RoutedEventArgs e)
+        private void Add_To_Bookmarks_Click(object sender, RoutedEventArgs e)
         {
             
         }
@@ -268,3 +268,5 @@ namespace Books_and_Magazines
         }
     }
 }
+
+// Opacity="0.35" Text="Input your request . . ."  

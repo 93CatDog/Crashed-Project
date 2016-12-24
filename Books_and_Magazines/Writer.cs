@@ -100,6 +100,7 @@ namespace Books_and_Magazines
                 return Years + "\n" + About;
             }
         }
+
         public string ImageSource
         {
             get
@@ -108,7 +109,14 @@ namespace Books_and_Magazines
             }
             set
             {
-                this.mImageSource = "pack://application:,,,/Books_and_Magazines;component/" + value;
+                if (value.Contains('/'))
+                {
+                    this.mImageSource = value;
+                }
+                else
+                {
+                    this.mImageSource = "pack://application:,,,/Books_and_Magazines;component/" + value;
+                }
             }
         }
 
@@ -123,6 +131,10 @@ namespace Books_and_Magazines
         {
             get
             {
+                if(this.BooksList == null)
+                {
+                    return "";
+                }
                 string str = null;
                 if (this.BooksList.Count < 5)
                 {
@@ -145,7 +157,7 @@ namespace Books_and_Magazines
             }
         }      
 
-        /*
+        
         public Writer(string name, string surname, int birthdate, int deathdate)
         {
             this.mName = name;
@@ -154,7 +166,12 @@ namespace Books_and_Magazines
             this.mBirthDate = birthdate;
             this.mDeathDate = deathdate;       
         }
-        */
+
+        public Writer()
+        {
+
+        }
+        
 
         public override string ToString()
         {

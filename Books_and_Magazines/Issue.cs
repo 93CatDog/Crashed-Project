@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Books_and_Magazines
 {
+    [Serializable]
     class Issue
     {
         private Newspaper mNewspaper;

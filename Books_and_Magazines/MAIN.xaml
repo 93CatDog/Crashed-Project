@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Books_and_Magazines"
         mc:Ignorable="d"
-        Title="MAIN" Icon="icon.png" WindowStartupLocation="CenterScreen" Width="1200">
+        Title="MAIN" Icon="icon.png" WindowStartupLocation="Manual" Width="1200">
     <Window.Resources>
         <Style TargetType="TabItem">
             <Setter Property="Height" Value="60" />
@@ -50,13 +50,36 @@
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <Grid x:Name="Panel" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Margin="38,27,0,0" >
-                        <TextBox x:Name="SearchBox" TextChanged="SearchBox_TextChanged" Height="{Binding ElementName=Panel}" TextWrapping="Wrap" Width="350" />
+                    <Grid x:Name="Panel" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Margin="38,17,0,0" >
+                        <TextBox x:Name="SearchBox" FontFamily="Arial" FontSize="35" TextChanged="SearchBox_TextChanged" Height="{Binding ElementName=Panel}" TextWrapping="Wrap" Width="700" />
                         
                     </Grid>
-                    <Button x:Name="Bookmarks" BorderBrush="#FF7EB4EA" BorderThickness="3"  Content="Bookmarks" VerticalAlignment="Top" Margin="0,22,265,0" Height="{Binding ElementName=Panel}" HorizontalContentAlignment="Center" HorizontalAlignment="Right" Click="Bookmarks_Click"/>
                 </Grid>
             </TabItem>
+
+            <TabItem x:Name="Bookmarks" Header="Bookmarks" Template="{DynamicResource TabItemControlTemplate1}">
+
+                <Grid>
+                    <ListView x:Name="listView5">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Columns="5" HorizontalAlignment="Stretch"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                                    <Image Source="{Binding ImageSource}" HorizontalAlignment="Stretch" VerticalAlignment="Top" Stretch="UniformToFill" />
+                                    <TextBlock Text="{Binding Name}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                </Grid>
+
+            </TabItem>
+
             <TabItem x:Name="Writers" Header="Writers" Template="{DynamicResource TabItemControlTemplate1}">
                 <Grid>
                     <ListView x:Name="listView2" Margin="0,92,0,0" >
@@ -131,6 +154,9 @@
                 </Grid>
 
             </TabItem>
+
+           
+
         </TabControl>
 
     </Grid>

@@ -114,9 +114,16 @@ namespace Books_and_Magazines
                 Writer_1.BirthDate = Convert.ToInt32(WrtBirthDate.Text);
                // Writer_1.DeathDate = Convert.ToInt32(WrtDeathDate.Text);
                 Writer_1.Biography = Biography.Text;
+                //MessageBox.Show(WrtPhoto.Source.ToString());
+                Writer_1.ImageSource = WrtPhoto.Source.ToString();
+                foreach (Book item in Books_List.SelectedItems)
+                {
+                    this.Writer_1.Add_Book(item);
+                }
                 tmp_info.Add_Writers(Writer_1);
                 tmp_info.LoadToBinaryFile(filename);
                 this.Close();
+                this.wn.View();
                 this.wn.Show();
             }
         }
@@ -137,7 +144,7 @@ namespace Books_and_Magazines
             foreach (Book item in Books_List.SelectedItems)
             {
                 BooksList.Add(item);
-            }           
+            }        
             //MessageBox.Show(items.Count.ToString());
             int i = TextBlockList.Count;
             int j = BooksList.Count;
@@ -148,3 +155,5 @@ namespace Books_and_Magazines
         }
     }
 }
+
+

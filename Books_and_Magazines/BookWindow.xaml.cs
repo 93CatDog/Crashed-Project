@@ -64,6 +64,7 @@ namespace Books_and_Magazines
             //MessageBox.Show(this.Source);
         }
 
+        /*
         public void test()
         {
             Book b = new Book("Za", "rom", "da", 1900);
@@ -75,5 +76,6 @@ namespace Books_and_Magazines
             this.wn.listView3.Items.Clear();
             this.wn.View();
         }
+        */
     }
 }
