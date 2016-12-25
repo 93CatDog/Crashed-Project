@@ -135,7 +135,7 @@ namespace Books_and_Magazines
                 {
                     return "";
                 }
-                string str = null;
+                string str = "";
                 if (this.BooksList.Count < 5)
                 {
                     foreach (var item in BooksList)

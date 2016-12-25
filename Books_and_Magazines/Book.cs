@@ -171,7 +171,7 @@ namespace Books_and_Magazines
         {
             get
             {
-                string str = null;
+                string str = "";
                 if (this.WritersList.Count < 4)
                 {
                     foreach (var item in WritersList)

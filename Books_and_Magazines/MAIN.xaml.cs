@@ -24,19 +24,18 @@ namespace Books_and_Magazines
         private Info minfo = new Info();
         private Info mbookmarks = new Info();
         private string fileName = "TEXT.txt";
+        private string fileName2 = "Bookmarks.txt";
         private WindowAddObject wn;
-        private ContextMenu cm = new ContextMenu();
 
         public MAIN()
         {
             InitializeComponent();
-            cm.Items.Add("Add to Bookmarks");
-            cm.Items.Add("Edit");
-            cm.Items.Add("Delete");
 
             //Change_File();
 
             View();
+
+            ViewBookmarks();
         }
 
         public void Search_View()
@@ -83,6 +82,24 @@ namespace Books_and_Magazines
             for (int C = 0; C < minfo.Newspapers.Count; C++)
             {
                 listView4.Items.Add(minfo.Newspapers.ElementAt(C));
+            }
+        }
+
+        public void ViewBookmarks()
+        {
+            listView5.Items.Clear();
+            mbookmarks = mbookmarks.LoadFromBinaryFile(fileName2);
+            foreach (var item in mbookmarks.Writers)
+            {
+                listView5.Items.Add(item);
+            }
+            foreach (var item in mbookmarks.Newspapers)
+            {
+                listView5.Items.Add(item);
+            }
+            foreach (var item in mbookmarks.Books)
+            {
+                listView5.Items.Add(item);
             }
         }
 
@@ -206,7 +223,6 @@ namespace Books_and_Magazines
             minfo.Add_Writers(Bulgakov);
 
             minfo.LoadToBinaryFile(fileName);
-            //LoadToBinaryFile(minfo, fileName);
         }
 
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -254,21 +270,154 @@ namespace Books_and_Magazines
         private void AddToBookmarks_Click(object sender, RoutedEventArgs e)
         {
             // MessageBox.Show(listView1.SelectedItem.GetType().Name.ToString());
-           
+            object obj = listView1.SelectedItem;
+            switch (listView1.SelectedItem.GetType().Name)
+            {
+                case "Writer":
+                    mbookmarks.Add_Writers((Writer)obj);
+                    mbookmarks.LoadToBinaryFile(fileName2);
+                    ViewBookmarks();
+                    break;
+                case "Book":
+                    mbookmarks.Add_Books((Book)obj);
+                    mbookmarks.LoadToBinaryFile(fileName2);
+                    ViewBookmarks();
+                    break;
+                case "Newspaper":
+                    mbookmarks.Add_Newspapers((Newspaper)obj);
+                    mbookmarks.LoadToBinaryFile(fileName2);
+                    ViewBookmarks();
+                    break;
+            }
+
         }
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(listView1.SelectedItem.GetType().Name.ToString());
+            //MessageBox.Show(listView1.SelectedItem.GetType().Name.ToString());
             
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(listView1.SelectedItem.GetType().Name.ToString());
+            //MessageBox.Show(listView1.SelectedItem.GetType().Name.ToString());
 
+        }
+
+
+        private void RemoveFromBookmarks_Click(object sender, RoutedEventArgs e)
+        {
+            object obj = listView1.SelectedItem;
+            switch (listView1.SelectedItem.GetType().Name)
+            {
+                case "Writer":
+                    obj = (Writer)obj;
+                    foreach (var item in mbookmarks.Writers)
+                    {
+                        if (obj == item)
+                        {
+                            mbookmarks.Writers.Remove(item);
+                            mbookmarks.LoadToBinaryFile(fileName2);
+                            ViewBookmarks();
+                            break;
+                        }
+                    }
+                    break;
+                case "Book":
+                    mbookmarks.Books.Remove(obj as Book);
+                    mbookmarks.LoadToBinaryFile(fileName2);
+                    ViewBookmarks();
+                    break;
+                case "Newspaper":
+                    mbookmarks.Newspapers.Remove(obj as Newspaper);
+                    mbookmarks.LoadToBinaryFile(fileName2);
+                    ViewBookmarks();
+                    break;
+            }
+        }
+
+     
+
+        private void ContexMMenu_ContextMenuOpening(object sender, ContextMenuEventArgs e)
+        {
+            object obj = listView1.SelectedItem;
+            switch (listView1.SelectedItem.GetType().Name)
+            {
+                case "Writer":
+                    foreach (var item in mbookmarks.Writers)
+                    {
+                        if (obj as Writer == item)
+                        {
+                            this.AddToBookmarks.IsEnabled = false;
+                            this.RemoveFromBookmarks.IsEnabled = true;
+                            break;
+                        }
+                    }
+                    break;
+                case "Book":
+                    foreach (var item in mbookmarks.Books)
+                    {
+                        if (obj as Book == item)
+                        {
+                            this.AddToBookmarks.IsEnabled = false;
+                            this.RemoveFromBookmarks.IsEnabled = true;
+                            break;
+                        }
+                    }
+                    break;
+                case "Newspaper":
+                    foreach (var item in mbookmarks.Newspapers)
+                    {
+                        if (obj as Newspaper == item)
+                        {
+                            this.AddToBookmarks.IsEnabled = false;
+                            this.RemoveFromBookmarks.IsEnabled = true;
+                            break;
+                        }
+                    }
+                    break;
+            }
+        }
+
+        private void ContexMMenu_Opened(object sender, RoutedEventArgs e)
+        {
+            object obj = listView1.SelectedItem;
+            switch (listView1.SelectedItem.GetType().Name)
+            {
+                case "Writer":
+                    foreach (var item in mbookmarks.Writers)
+                    {
+                        if (obj as Writer == item)
+                        {
+                            this.AddToBookmarks.IsEnabled = false;
+                            this.RemoveFromBookmarks.IsEnabled = true;
+                            break;
+                        }
+                    }
+                    break;
+                case "Book":
+                    foreach (var item in mbookmarks.Books)
+                    {
+                        if (obj as Book == item)
+                        {
+                            this.AddToBookmarks.IsEnabled = false;
+                            this.RemoveFromBookmarks.IsEnabled = true;
+                            break;
+                        }
+                    }
+                    break;
+                case "Newspaper":
+                    foreach (var item in mbookmarks.Newspapers)
+                    {
+                        if (obj as Newspaper == item)
+                        {
+                            this.AddToBookmarks.IsEnabled = false;
+                            this.RemoveFromBookmarks.IsEnabled = true;
+                            break;
+                        }
+                    }
+                    break;
+            }
         }
     }
 }
-
-// Opacity="0.35" Text="Input your request . . ."  
