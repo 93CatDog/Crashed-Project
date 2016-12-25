@@ -39,7 +39,7 @@
     </Window.Resources>
     <Grid>
         <TabControl x:Name="tabControl" TabStripPlacement="Left">
-            <TabItem x:Name="Search" Header="Search" Template="{DynamicResource TabItemControlTemplate1}">
+            <TabItem x:Name="Search" Header="Search" Template="{StaticResource TabItemControlTemplate1}">
                 <Grid>
                     <ListView x:Name="listView1" Margin="0,92,0,0" >
                         <ListView.ContextMenu>
