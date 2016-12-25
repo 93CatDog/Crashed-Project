@@ -43,12 +43,13 @@
                 <Grid>
                     <ListView x:Name="listView1" Margin="0,92,0,0" >
                         <ListView.ContextMenu>
-                            <ContextMenu>
+                            <ContextMenu x:Name="ContexMMenu" Opened="ContexMMenu_Opened" ContextMenuOpening="ContexMMenu_ContextMenuOpening" >
                                 <MenuItem x:Name="AddToBookmarks" Click="AddToBookmarks_Click" IsChecked="False" Template="{DynamicResource MenuItemControlTemplate}" Header="Add to Bookmarks"></MenuItem>
-                                <Separator BorderThickness="1" BorderBrush="BurlyWood" Foreground="{x:Null}" Width="200" HorizontalAlignment="Left"></Separator>
+                                <MenuItem x:Name="RemoveFromBookmarks" Click="RemoveFromBookmarks_Click" IsChecked="False" Template="{DynamicResource MenuItemControlTemplate}" Header="Remove from Bookmarks"></MenuItem>
+                                <Separator BorderThickness="1" BorderBrush="BurlyWood" Foreground="{x:Null}" Width="240" HorizontalAlignment="Left"></Separator>
                                 <MenuItem x:Name="Edit" Click="Edit_Click" Template="{DynamicResource MenuItemControlTemplate}" Header="Edit" >
                                 </MenuItem>
-                                <Separator BorderThickness="1" BorderBrush="BurlyWood" Foreground="{x:Null}" Width="200" HorizontalAlignment="Left"></Separator>
+                                <Separator BorderThickness="1" BorderBrush="BurlyWood" Foreground="{x:Null}" Width="240" HorizontalAlignment="Left"></Separator>
                                 <MenuItem x:Name="Delete" Click="Delete_Click" Template="{DynamicResource MenuItemControlTemplate}" Header="Delete"></MenuItem>
                             </ContextMenu>
                         </ListView.ContextMenu>

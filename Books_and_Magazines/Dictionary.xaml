@@ -225,10 +225,14 @@
         <Border x:Name="templateRoot" BorderBrush="{TemplateBinding BorderBrush}"  BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
             <Grid >
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition MinWidth="20" Width="Auto"/>
                     <ColumnDefinition Width="5"/>
+<<<<<<< HEAD
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="10"/>
+=======
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="240"/>
+>>>>>>> 4e863d8c40ae63f5c74fb830707f73b8d4769595
                 </Grid.ColumnDefinitions>
                 <Border x:Name="GlyphPanel" BorderBrush="{x:Null}" Background="{x:Null}" ClipToBounds="False" HorizontalAlignment="Center" Height="22" Margin="-1,0,0,0" Visibility="Hidden" VerticalAlignment="Center" Width="22">
                     <Path x:Name="Glyph" Data="F1M10,1.2L4.7,9.1 4.5,9.1 0,5.2 1.3,3.5 4.3,6.1 8.3,0 10,1.2z" Fill="#FF212121" FlowDirection="LeftToRight" Height="11" Width="10"/>
