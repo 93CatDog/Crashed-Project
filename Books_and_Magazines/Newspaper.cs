@@ -31,7 +31,7 @@ namespace Books_and_Magazines
         {
             get
             {
-                return "Newspaper";
+                return this.GetType().Name.ToString();
             }
         }
         public int Start_year

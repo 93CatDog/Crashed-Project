@@ -108,6 +108,11 @@ namespace Books_and_Magazines
 
         }
 
+        public override string ToString()
+        {
+            return this.Name;
+        }
+
         /*
         public Publishing(string Name, string Location, int Foundation, string Info )
         {

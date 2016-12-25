@@ -22,12 +22,17 @@ namespace Books_and_Magazines
     public partial class MAIN : Window
     {
         private Info minfo = new Info();
+        private Info mbookmarks = new Info();
         private string fileName = "TEXT.txt";
         private WindowAddObject wn;
+        private ContextMenu cm = new ContextMenu();
 
         public MAIN()
         {
             InitializeComponent();
+            cm.Items.Add("Add to Bookmarks");
+            cm.Items.Add("Edit");
+            cm.Items.Add("Delete");
 
             //Change_File();
 
@@ -100,6 +105,10 @@ namespace Books_and_Magazines
             {
                 str = (listView4.SelectedItem.GetType().Name);
             }  
+            if(this.Bookmarks.IsSelected == true)
+            {
+                str = (listView5.SelectedItem.GetType().Name);
+            }
                 switch (str)
                 {
                     case "Book":
@@ -122,26 +131,6 @@ namespace Books_and_Magazines
                         break;
                 }
         }
-
-        //static void LoadToBinaryFile(object obj, string FileName)
-        //{
-        //    BinaryFormatter binFormat = new BinaryFormatter();
-        //    using (Stream fStream = new FileStream(FileName, FileMode.Create, FileAccess.Write, FileShare.None))
-        //    {
-        //        binFormat.Serialize(fStream, obj);
-        //    }           
-        //}
-
-        //static Info LoadFromBinaryFile(string FileName)
-        //{
-        //    BinaryFormatter binFormat = new BinaryFormatter();
-
-        //    using (Stream fStream = File.OpenRead(FileName))
-        //    {
-        //        Info info = (Info)binFormat.Deserialize(fStream);
-        //        return info;
-        //    }
-        //}
 
         private void Change_File()
         {
@@ -220,11 +209,6 @@ namespace Books_and_Magazines
             //LoadToBinaryFile(minfo, fileName);
         }
 
-        private void Add_To_Bookmarks_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (SearchBox.Text == String.Empty)
@@ -265,6 +249,24 @@ namespace Books_and_Magazines
         {
             this.wn = new WindowAddObject(this, "Newspaper");
             wn.Show();
+        }
+
+        private void AddToBookmarks_Click(object sender, RoutedEventArgs e)
+        {
+            // MessageBox.Show(listView1.SelectedItem.GetType().Name.ToString());
+           
+        }
+
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(listView1.SelectedItem.GetType().Name.ToString());
+            
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(listView1.SelectedItem.GetType().Name.ToString());
+
         }
     }
 }

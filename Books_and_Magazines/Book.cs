@@ -91,7 +91,7 @@ namespace Books_and_Magazines
         {
             get
             {
-                return "Book";
+                return this.GetType().Name.ToString();
             }
         }
         public string About
