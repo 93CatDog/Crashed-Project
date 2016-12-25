@@ -93,7 +93,7 @@ namespace Books_and_Magazines
         {
             get
             {
-                return this.mBooksList;
+                return this.mBooksList; 
             }
         }
         public List<Newspaper> NewspapersList

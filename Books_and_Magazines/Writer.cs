@@ -6,6 +6,22 @@ using System.Threading.Tasks;
 
 namespace Books_and_Magazines
 {
+    class WriterComparerName : IComparer<Writer>
+    {
+        public int Compare(Writer x, Writer y)
+        {
+            return x.Name.CompareTo(y.Name);
+        }
+    }
+
+    class WriterComparerSurname : IComparer<Writer>
+    {
+        public int Compare(Writer x, Writer y)
+        {
+            return x.Surname.CompareTo(y.Surname);
+        }
+    }
+
     [Serializable]
     class Writer
     {
@@ -135,14 +151,14 @@ namespace Books_and_Magazines
                 {
                     return "";
                 }
-                string str = null;
+                string str = "";
                 if (this.BooksList.Count < 5)
                 {
                     foreach (var item in BooksList)
                     {
                         str += "“" + item.Name + "”, ";
                     }
-                    str = str.Remove(str.Length - 2);
+                    //str = str.Remove(str.Length - 2);
                 }
                 else
                 {

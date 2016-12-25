@@ -6,6 +6,14 @@ using System.Threading.Tasks;
 
 namespace Books_and_Magazines
 {
+    class NewspaperComparerName : IComparer<Newspaper>
+    {
+        public int Compare(Newspaper x, Newspaper y)
+        {
+            return x.Name.CompareTo(y.Name);
+        }
+    }
+
     [Serializable]
     class Newspaper
     {

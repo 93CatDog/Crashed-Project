@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Books_and_Magazines"
         mc:Ignorable="d"
-        Title="WindowAddObject" Icon="icon.png" WindowStartupLocation="CenterScreen" Height="500" Width="1100">
+        Title="Add New Item" Icon="icon.png" WindowStartupLocation="CenterScreen" Height="500" Width="1100">
     <Window.Resources>
         <Style TargetType="ListBoxItem">
             <!--<EventSetter Event="MouseDoubleClick" Handler="ListBoxItem_MouseDoubleClick"/>-->
@@ -30,6 +30,7 @@
             <Setter Property="Width" Value="300" />
         </Style>
 
+
     </Window.Resources>
     <Grid>
         <TabControl x:Name="tabControl" TabStripPlacement="Left">
@@ -51,27 +52,27 @@
             </TabControl.ItemTemplate>
             <TabItem x:Name="Item1" Header="Writers" Template="{DynamicResource TabItemControlTemplate1}">
                 <Grid>
-                    <Border BorderBrush="Red" BorderThickness="3" Width="200" Height="200" HorizontalAlignment="Left" Margin="41.491,27.5,0,0" VerticalAlignment="Top" d:LayoutOverrides="Height">
+                    <Border BorderThickness="3" Width="200" Height="200" HorizontalAlignment="Left" Margin="41.491,27.5,0,0" VerticalAlignment="Top" d:LayoutOverrides="Height" BorderBrush="#FF9996BF">
                         <Image x:Name="WrtPhoto" Width="200" Height="200" Source="pack://application:,,,/Books_and_Magazines;component/DefaultWriter.png"  />
                     </Border>
-                    <Button x:Name="AddWrtPhoto_btn" Content="Add photo" Click="AddWrtPhoto_Click" Height="41"  VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="170.983" Margin="55.491,0,0,177" />
+                    <Button x:Name="AddWrtPhoto_btn" Content="Add photo" Click="AddWrtPhoto_Click" Height="41"  VerticalAlignment="Bottom" HorizontalAlignment="Left"  Margin="55.491,0,0,177" Style="{DynamicResource ButtonStyle}" />
                     <TextBlock  Height="35.886" TextWrapping="Wrap" Text="Name:" Width="86" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="366.497,27.5,0,0"/>
                     <TextBlock  HorizontalAlignment="Left" Margin="325,78,0,0" TextWrapping="Wrap" Text="Surname:" VerticalAlignment="Top"/>
-                    <TextBox x:Name="WrtName" Height="33" Margin="457.497,30.386,247.486,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                    <TextBox x:Name="WrtName"  Height="33" Margin="457.497,30.386,247.486,0" TextWrapping="NoWrap" VerticalAlignment="Top"/>
                     <TextBox x:Name="WrtSurname" Height="33" Margin="457.497,78,247.486,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
                     <TextBox x:Name="WrtBirthDate" Height="33" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="457.497,124.826,371.52,0"/>
                     <TextBox x:Name="WrtDeathDate" Height="33" Margin="0,124.825,247.486,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="98.517"/>
                     <TextBlock x:Name="Years" Margin="370.979,120.412,0,0" TextWrapping="Wrap" Text="Years:" VerticalAlignment="Top" HorizontalAlignment="Left" Width="81.518"/>
-                    <TextBlock x:Name="Defice" TextWrapping="Wrap" Text="-" Width="15.517" HorizontalAlignment="Right" Margin="0,120.413,351.003,0" VerticalAlignment="Top" Height="37.413"/>
+                    <TextBlock x:Name="Defice" TextAlignment="Center" TextWrapping="Wrap" Text="-" Width="15.517"  HorizontalAlignment="Right" Margin="0,120.413,351.003,0" VerticalAlignment="Top" Height="37.413"/>
                     <TextBlock x:Name="Choose_books" TextWrapping="Wrap" Text="Choose books:" VerticalAlignment="Top" Margin="283.996,180.752,0,0" HorizontalAlignment="Left" Width="168.501"/>
                     <TextBox x:Name="Books"   Height="33" Margin="457.497,180.752,247.486,0" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="Books_TextChanged"/>
-                    <ListBox x:Name="Books_List" Margin="0,113.752,10,0" SelectionMode="Multiple" SelectionChanged="Books_List_SelectionChanged" HorizontalAlignment="Right" Height="100" VerticalAlignment="Top" Width="224" />
+                    <ListBox x:Name="Books_List" Margin="0,119.45,24.987,0" SelectionMode="Multiple" SelectionChanged="Books_List_SelectionChanged" HorizontalAlignment="Right" Visibility="Hidden" Width="204" Height="94.302" VerticalAlignment="Top" />
                     <TextBlock  TextWrapping="Wrap" Text="Biography:" VerticalAlignment="Bottom" Margin="283.996,0,0,145.533" HorizontalAlignment="Left" Width="148.003"/>
-                    <TextBox x:Name="Biography" Height="118.5" Margin="457.497,0,80.503,64.446" TextWrapping="Wrap" VerticalAlignment="Bottom"/>
+                    <TextBox x:Name="Biography" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" Height="118.5" Margin="457.497,0,80.503,64.446" TextWrapping="Wrap" VerticalAlignment="Bottom"/>
                     <TextBlock x:Name="Book_3" TextWrapping="Wrap" Margin="0,223.165,38.486,202.421" HorizontalAlignment="Right" Width="190.501" FontSize="12" d:LayoutOverrides="Height"/>
                     <TextBlock x:Name="Book_2" TextWrapping="Wrap" Margin="0,223.165,261.003,202.421" HorizontalAlignment="Right" Width="183.984" FontSize="12" d:LayoutOverrides="Height"/>
                     <TextBlock x:Name="Book_1" TextWrapping="Wrap" Margin="283.996,223.165,460.486,202.42" d:LayoutOverrides="Height" FontSize="12"/>
-                    <Button x:Name="Save_btn" Content="Save" Click="Save_Wrt_btn_Click" Height="41"  VerticalAlignment="Bottom" Margin="0,0,19.486,10" HorizontalAlignment="Right" Width="148.983" />
+                    <Button x:Name="Save_btn" Content="Save" Click="Save_Wrt_btn_Click" Height="41"  VerticalAlignment="Bottom" Margin="0,0,19.486,10" HorizontalAlignment="Right" Width="120" Style="{DynamicResource ButtonStyle}" />
                 </Grid>
             </TabItem>
             <TabItem x:Name="Item2" Header="Books" Template="{DynamicResource TabItemControlTemplate1}">

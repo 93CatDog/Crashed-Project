@@ -89,30 +89,41 @@ namespace Books_and_Magazines
         private void Save_Wrt_btn_Click(object sender, RoutedEventArgs e)
         {
             string[] tmp1 = WrtName.Text.Split(separator);
-            string[] tmp2 = WrtName.Text.Split(separator);
+            string[] tmp2 = WrtSurname.Text.Split(separator);
             int year = 0;
             int year1 = 0;
+            MessageBox.Show(WrtName.Text.Length.ToString());
+            MessageBox.Show(tmp1.GetLength(0).ToString());
+            try
+            {
+                if (tmp1.GetLength(0) == 1 || tmp2.GetLength(0) == 1 || WrtName.Text.Length == 0 || WrtSurname.Text.Length == 0)
+                    throw new IncorrectStringException();
+            }
+            catch (IncorrectStringException)
+            {
+                MessageBox.Show("Fields 'Name' and 'Surname' can't be empty and must only consist of letters");
+            }
             try
             {
                 year= Convert.ToInt32(WrtBirthDate.Text);
-                //year1 = Convert.ToInt32(WrtDeathDate.Text);
-                if (year > DateTime.Now.Year || year < 0 /*|| year1 > DateTime.Now.Year || year1 < 0 ||year>year1*/)
-                    throw new DateException();
+                year1 = Convert.ToInt32(WrtDeathDate.Text);               
+                if (year > DateTime.Now.Year || year < 0 || year>year1)
+                    throw new DateException();                
             }
             catch(FormatException)
             {
-                MessageBox.Show("Uncorrect date format");
+                MessageBox.Show("Incorrect date format");
             }
             catch(DateException)
             {
-                MessageBox.Show("Uncorrect Birthdate");
+                MessageBox.Show("Incorrect Birthdate");
             }
-            if(( tmp1.GetLength(0)==1) && tmp2.GetLength(0) == 1)
-            {
+            if (tmp1.GetLength(0) == 1 && tmp2.GetLength(0) == 1 && year != 0 && WrtName.Text.Length != 0 && WrtSurname.Text.Length != 0) 
+            {                
                 Writer_1.Name = WrtName.Text;
                 Writer_1.Surname = WrtSurname.Text;
                 Writer_1.BirthDate = Convert.ToInt32(WrtBirthDate.Text);
-               // Writer_1.DeathDate = Convert.ToInt32(WrtDeathDate.Text);
+                Writer_1.DeathDate = Convert.ToInt32(WrtDeathDate.Text);
                 Writer_1.Biography = Biography.Text;
                 //MessageBox.Show(WrtPhoto.Source.ToString());
                 Writer_1.ImageSource = WrtPhoto.Source.ToString();

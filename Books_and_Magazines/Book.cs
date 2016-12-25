@@ -22,13 +22,6 @@ namespace Books_and_Magazines
             return x.Date.CompareTo(y.Date);
         }
     }
-    class BookCompaperWriters : IComparer<Book>
-    {
-        public int Compare(Book x, Book y)
-        {
-            return x.WritersList.Count - y.WritersList.Count;
-        }
-    }
 
     [Serializable]
     class Book
@@ -41,7 +34,6 @@ namespace Books_and_Magazines
         private Publishing mPublishing;
         private string mImageSource = "pack://application:,,,/Books_and_Magazines;component/DefaultBook.png";
         private string mFileSource;                                     
-
 
         public string Name
         {
