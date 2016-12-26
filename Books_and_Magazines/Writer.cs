@@ -32,12 +32,18 @@ namespace Books_and_Magazines
         private int mDeathDate;
         private string mImageSource = "pack://application:,,,/Books_and_Magazines;component/DefaultWriter.png";
         private List<Book> mBooksList = new List<Book>();
-
+        public string Type
+        {
+            get
+            {
+                return this.GetType().Name;
+            }
+        }
         public string Name
         {
             get
             {
-                return this.mName + " " + this.Surname;
+                return this.mName;
             }
             set
             {
@@ -53,6 +59,13 @@ namespace Books_and_Magazines
             set
             {
                 this.mSurname = value;
+            }
+        }
+        public string FullName
+        {
+            get
+            {
+                return Name + Surname;
             }
         }
         public string Biography
@@ -95,28 +108,13 @@ namespace Books_and_Magazines
                 this.mDeathDate = value;
             }
         }
-        public string Type
-        {
-            get
-            {
-                return this.GetType().Name.ToString();
-            }
-        }
-        public string About
-        {
-            get
-            {
-                return ("Wrote : " + this.NamesFromBooksList);
-            }
-        }
         public string AboutItem
         {
             get
             {
-                return Years + "\n" + About;
+                return "Years :" + Years + "\n" + "Wrote : " + this.NamesFromBooksList;
             }
         }
-
         public string ImageSource
         {
             get
@@ -135,7 +133,6 @@ namespace Books_and_Magazines
                 }
             }
         }
-
         public List<Book> BooksList
         {
             get

@@ -35,13 +35,6 @@ namespace Books_and_Magazines
                 this.mName = value;
             }
         }
-        public string Type
-        {
-            get
-            {
-                return this.GetType().Name.ToString();
-            }
-        }
         public int Start_year
         {
             get
@@ -69,6 +62,13 @@ namespace Books_and_Magazines
             get
             {
                 return "since " + Start_year + "\n" + HyperLink; 
+            }
+        }
+        public string Type
+        {
+            get
+            {
+                return this.GetType().Name;
             }
         }
         public string ImageSource

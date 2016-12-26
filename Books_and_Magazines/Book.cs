@@ -90,8 +90,7 @@ namespace Books_and_Magazines
         {
             get
             {
-                return ("Written by: " + this.NamesFromWritersList
-                    + "\n" + "in " + this.Date);
+                return ("Genre: " + Genre + "\n" + "Written in: " + this.Date + "\n" + "Written by: " + this.NamesFromWritersList + "\n" + Annotation);
             }
         }
         public Publishing Publishing

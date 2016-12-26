@@ -271,6 +271,7 @@ namespace Books_and_Magazines
         {
             // MessageBox.Show(listView1.SelectedItem.GetType().Name.ToString());
             object obj = listView1.SelectedItem;
+            MessageBox.Show(obj.Equals(minfo.Writers.Find(item => item.Name.Contains((obj as Writer).Name))).ToString());
             switch (listView1.SelectedItem.GetType().Name)
             {
                 case "Writer":
@@ -307,29 +308,33 @@ namespace Books_and_Magazines
 
         private void RemoveFromBookmarks_Click(object sender, RoutedEventArgs e)
         {
-            object obj = listView1.SelectedItem;
+            object wrt = listView1.SelectedItem;          
+            //MessageBox.Show(wrt.Equals(wrt2).ToString());
+            //MessageBox.Show(wrt.Name + " " + wrt.About);
+            //MessageBox.Show(wrt2.Name + " " + wrt2.About);
+            //if (wrt == wrt2)
+            // Console.WriteLine("Yes");
+            //wrt = mbookmarks.Writers.Find(item => item.Name.Contains(wrt.Name));
+            //MessageBox.Show(mbookmarks.Writers.Find(item=>item.Name.Contains(wrt.Name)).Name);
             switch (listView1.SelectedItem.GetType().Name)
             {
                 case "Writer":
-                    obj = (Writer)obj;
-                    foreach (var item in mbookmarks.Writers)
-                    {
-                        if (obj == item)
-                        {
-                            mbookmarks.Writers.Remove(item);
-                            mbookmarks.LoadToBinaryFile(fileName2);
-                            ViewBookmarks();
-                            break;
-                        }
-                    }
+                    Writer wrt2 = mbookmarks.Writers.Find(item => item.Name.Contains((wrt as Writer).Name));
+                    Writer wrt3 = mbookmarks.Writers.Find(item => item.Surname.Contains((wrt as Writer).Surname));
+                    if(wrt2.Equals(wrt3))
+                        mbookmarks.Writers.Remove(wrt2);
+                    mbookmarks.LoadToBinaryFile(fileName2);
+                    ViewBookmarks();
                     break;
                 case "Book":
-                    mbookmarks.Books.Remove(obj as Book);
+                    Book bk = mbookmarks.Books.Find(item => item.Name.Contains((wrt as Book).Name));
+                    mbookmarks.Books.Remove(bk);
                     mbookmarks.LoadToBinaryFile(fileName2);
                     ViewBookmarks();
                     break;
                 case "Newspaper":
-                    mbookmarks.Newspapers.Remove(obj as Newspaper);
+                    Newspaper nwsp = mbookmarks.Newspapers.Find(item => item.Name.Contains((wrt as Newspaper).Name));
+                    mbookmarks.Newspapers.Remove(nwsp);
                     mbookmarks.LoadToBinaryFile(fileName2);
                     ViewBookmarks();
                     break;

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Books_and_Magazines"
         mc:Ignorable="d"
-        Height="750" Width="1200" Icon="icon.png" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Title="Library1" WindowState="Normal">
+        Height="750" Width="1200" Icon="icon.png" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Title="Library" WindowState="Normal">
     <Grid Cursor="Hand">
         <Grid.Background>
             <ImageBrush ImageSource="pack://application:,,,/Books_and_Magazines;component/Books-Background-1.jpg" />

@@ -96,7 +96,7 @@ namespace Books_and_Magazines
             MessageBox.Show(tmp1.GetLength(0).ToString());
             try
             {
-                if (tmp1.GetLength(0) == 1 || tmp2.GetLength(0) == 1 || WrtName.Text.Length == 0 || WrtSurname.Text.Length == 0)
+                if (tmp1.GetLength(0) != 1 || tmp2.GetLength(0) != 1 || WrtName.Text.Length == 0 || WrtSurname.Text.Length == 0)
                     throw new IncorrectStringException();
             }
             catch (IncorrectStringException)
@@ -106,8 +106,8 @@ namespace Books_and_Magazines
             try
             {
                 year= Convert.ToInt32(WrtBirthDate.Text);
-                year1 = Convert.ToInt32(WrtDeathDate.Text);               
-                if (year > DateTime.Now.Year || year < 0 || year>year1)
+                //year1 = Convert.ToInt32(WrtDeathDate.Text);               
+                if (year > DateTime.Now.Year || year < 0 )//|| year>year1)
                     throw new DateException();                
             }
             catch(FormatException)
@@ -123,7 +123,7 @@ namespace Books_and_Magazines
                 Writer_1.Name = WrtName.Text;
                 Writer_1.Surname = WrtSurname.Text;
                 Writer_1.BirthDate = Convert.ToInt32(WrtBirthDate.Text);
-                Writer_1.DeathDate = Convert.ToInt32(WrtDeathDate.Text);
+                //Writer_1.DeathDate = Convert.ToInt32(WrtDeathDate.Text);
                 Writer_1.Biography = Biography.Text;
                 //MessageBox.Show(WrtPhoto.Source.ToString());
                 Writer_1.ImageSource = WrtPhoto.Source.ToString();
