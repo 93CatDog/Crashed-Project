@@ -9,6 +9,8 @@
     <Window.Resources>
         <Style TargetType="ListView">
             <Setter Property="ScrollViewer.CanContentScroll" Value="False"/>
+            <Setter Property="Background" Value="#FFF5ECD3"/>
+            <Setter Property="Margin" Value="-2"/>
         </Style>
         <Style TargetType="TabItem">
             <Setter Property="Height" Value="60" />
@@ -22,6 +24,8 @@
             <Setter Property="FontFamily" Value="Arial" />
             <Setter Property="Foreground" Value="Black" />
             <Setter Property="FontSize" Value="18" />
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+            <Setter Property="BorderBrush" Value="#FFC37E7E"/>
             <EventSetter Event="MouseDoubleClick" Handler="ListViewItem_MouseDoubleClick"/>
         </Style>
 
@@ -73,7 +77,7 @@
                                 <GridView >
                                     <GridViewColumn x:Name="Column1" Width="Auto" DisplayMemberBinding="{Binding Path=FullName}" Header="Name" />
                                     <GridViewColumn x:Name="Column2" Width="Auto" DisplayMemberBinding="{Binding Path=Type}" Header="Type" />
-                                    <GridViewColumn x:Name="Column3" Width="Auto" DisplayMemberBinding="{Binding Path=AboutItem}" Header="About" />
+                                    <GridViewColumn x:Name="Column3" Width="Auto" DisplayMemberBinding="{Binding Path=About}" Header="About" />
                                 </GridView>
                             </ListView.View>
                         </ListView>
@@ -209,7 +213,7 @@
                         <Button x:Name="Add3" Style="{DynamicResource AddButtonStyle}" Click="Add3_Click" BorderBrush="#FF7EB4EA" BorderThickness="3"  Content="Add Newspaper" VerticalAlignment="Top" Margin="0,17,40,0" Height="50" HorizontalContentAlignment="Left" HorizontalAlignment="Right" Width="253" />
                     </Grid>
                     <Grid Grid.Row="1">
-                        <ListView x:Name="listView4" Margin="-2" Background="#FFF5ECD3"  BorderThickness="0,1,0,0" Template="{DynamicResource ListBoxControlTemplate}" >
+                        <ListView x:Name="listView4" Template="{DynamicResource ListBoxControlTemplate}" >
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <Grid>

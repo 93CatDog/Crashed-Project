@@ -606,6 +606,7 @@
                 <Setter Property="Height" TargetName="RowDefinition0" Value="*"/>
                 <Setter Property="Height" TargetName="RowDefinition1" Value="0"/>
                 <Setter Property="Margin" TargetName="HeaderPanel" Value="0,0,0,0"/>
+                <Setter Property="VerticalAlignment" TargetName="HeaderPanel" Value="Center"/>
             </Trigger>
             <Trigger Property="TabStripPlacement" Value="Right">
                 <Setter Property="Grid.Row" TargetName="HeaderPanel" Value="0"/>

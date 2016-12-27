@@ -108,7 +108,7 @@ namespace Books_and_Magazines
                 this.mDeathDate = value;
             }
         }
-        public string AboutItem
+        public string About
         {
             get
             {
