@@ -424,5 +424,60 @@ namespace Books_and_Magazines
                     break;
             }
         }
+
+        private void BookNameSortRadio_Click(object sender, RoutedEventArgs e)
+        {
+            listView3.Items.Clear();
+            List<Book> books = minfo.Books;
+            books.Sort(new BookComparerName());
+            foreach(var item in books)
+            {
+                listView3.Items.Add(item);
+            }
+        }
+
+        private void BookDateSortRadio_Click(object sender, RoutedEventArgs e)
+        {
+            listView3.Items.Clear();
+            List<Book> books = minfo.Books;
+            books.Sort(new BookComparerDate());
+            foreach (var item in books)
+            {
+                listView3.Items.Add(item);
+            }
+        }
+
+        private void WriterNameSortRadio_Click(object sender, RoutedEventArgs e)
+        {
+            listView2.Items.Clear();
+            List<Writer> writers = minfo.Writers;
+            writers.Sort(new WriterComparerName());
+            foreach (var item in writers)
+            {
+                listView2.Items.Add(item);
+            }
+        }
+
+        private void WriterSurnameSortRadio_Click(object sender, RoutedEventArgs e)
+        {
+            listView2.Items.Clear();
+            List<Writer> writers = minfo.Writers;
+            writers.Sort(new WriterComparerSurname());
+            foreach (var item in writers)
+            {
+                listView2.Items.Add(item);
+            }
+        }
+
+        private void NewspaperNameSortRadio_Click(object sender, RoutedEventArgs e)
+        {
+            listView4.Items.Clear();
+            List<Newspaper> newspapers = minfo.Newspapers;
+            newspapers.Sort(new NewspaperComparerName());
+            foreach(var item in newspapers)
+            {
+                listView4.Items.Add(item);
+            }
+        }
     }
 }

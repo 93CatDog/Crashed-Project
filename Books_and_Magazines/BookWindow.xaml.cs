@@ -26,7 +26,6 @@ namespace Books_and_Magazines
         private Book book;
         private string Source = Assembly.GetExecutingAssembly().Location.ToString();
         private Info NewInfo;
-
         public BookWindow(MAIN w)
         {
             InitializeComponent();

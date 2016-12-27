@@ -22,8 +22,15 @@ namespace Books_and_Magazines
         private string mHyperLink;
         private string mImageSource = "pack://application:,,,/Books_and_Magazines;component/DefaultNewspaper.jpg";
         private List<Issue> mIssuesList;
-        private Publishing mPublishing;       
+        private Publishing mPublishing;
 
+        public string FullName
+        {
+            get
+            {
+                return this.mName;
+            }
+        }
         public string Name
         {
             get
@@ -61,7 +68,7 @@ namespace Books_and_Magazines
         {
             get
             {
-                return "since " + Start_year + "\n" + HyperLink; 
+                return "Since: " + Start_year + "\n" + "Website: " + HyperLink; 
             }
         }
         public string Type

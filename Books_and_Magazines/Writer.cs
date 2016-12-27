@@ -65,7 +65,7 @@ namespace Books_and_Magazines
         {
             get
             {
-                return Name + Surname;
+                return Name + " "  + Surname;
             }
         }
         public string Biography
@@ -149,7 +149,7 @@ namespace Books_and_Magazines
                     return "";
                 }
                 string str = "";
-                if (this.BooksList.Count < 5)
+                if (this.BooksList.Count < 4)
                 {
                     foreach (var item in BooksList)
                     {
@@ -159,12 +159,12 @@ namespace Books_and_Magazines
                 }
                 else
                 {
-                    for (var C = 0; C < 4; C++)
+                    for (int C = 0; C < 3; C++)
                     {
                         str += BooksList.ElementAt(C).Name + ", ";
                     }
-                    str = str.Remove(str.Length - 2);
-                    str = str + "...";
+                    //str = str.Remove(str.Length - 2);
+                    str = str + "...("+BooksList.Count+" books totally)";
                 }
                 return str;
             }

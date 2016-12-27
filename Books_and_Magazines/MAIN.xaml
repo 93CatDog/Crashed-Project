@@ -7,12 +7,15 @@
         mc:Ignorable="d"
         Title="MAIN" Icon="icon.png" WindowStartupLocation="Manual" Width="1200">
     <Window.Resources>
+        <Style TargetType="ListView">
+            <Setter Property="ScrollViewer.CanContentScroll" Value="False"/>
+        </Style>
         <Style TargetType="TabItem">
             <Setter Property="Height" Value="60" />
-            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Background" Value="Transparent"/>
             <Setter Property="FontSize" Value="30" />
             <Setter Property="FontFamily" Value="Bradley Hand ITC"/>
-            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="#FFC37E7E" />
         </Style>
 
         <Style TargetType="ListViewItem">
@@ -38,52 +41,46 @@
 
     </Window.Resources>
     <Grid>
-        <TabControl x:Name="tabControl" TabStripPlacement="Left">
-            <TabItem x:Name="Search" Header="Search" Template="{StaticResource TabItemControlTemplate1}">
+        <TabControl x:Name="tabControl"  TabStripPlacement="Left" BorderBrush="#FFC37E7E" Template="{DynamicResource TabControlControlTemplate}">
+            <TabItem x:Name="Search"  Header="Search" Template="{StaticResource TabItemControlTemplate1}" >
                 <Grid>
-                    <ListView x:Name="listView1" Margin="0,92,0,0" >
-                        <ListView.ContextMenu>
-                            <ContextMenu x:Name="ContexMMenu" Opened="ContexMMenu_Opened" ContextMenuOpening="ContexMMenu_ContextMenuOpening" >
-                                <MenuItem x:Name="AddToBookmarks" Click="AddToBookmarks_Click" IsChecked="False" Template="{DynamicResource MenuItemControlTemplate}" Header="Add to Bookmarks"></MenuItem>
-                                <MenuItem x:Name="RemoveFromBookmarks" Click="RemoveFromBookmarks_Click" IsChecked="False" Template="{DynamicResource MenuItemControlTemplate}" Header="Remove from Bookmarks"></MenuItem>
-                                <Separator BorderThickness="1" BorderBrush="BurlyWood" Foreground="{x:Null}" Width="240" HorizontalAlignment="Left"></Separator>
-                                <MenuItem x:Name="Edit" Click="Edit_Click" Template="{DynamicResource MenuItemControlTemplate}" Header="Edit" >
-                                </MenuItem>
-                                <Separator BorderThickness="1" BorderBrush="BurlyWood" Foreground="{x:Null}" Width="240" HorizontalAlignment="Left"></Separator>
-                                <MenuItem x:Name="Delete" Click="Delete_Click" Template="{DynamicResource MenuItemControlTemplate}" Header="Delete"></MenuItem>
-                            </ContextMenu>
-                        </ListView.ContextMenu>
-
-                        <ListView.View>
-                            <GridView >
-                                <GridViewColumn x:Name="Column1" Width="Auto" DisplayMemberBinding="{Binding Path=FullName}" Header="Name" />
-                                <GridViewColumn x:Name="Column2" Width="Auto" DisplayMemberBinding="{Binding Path=Type}" Header="Type" />
-                                <GridViewColumn x:Name="Column3" Width="Auto" DisplayMemberBinding="{Binding Path=AboutItem}" Header="About" />
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
-                    <Grid x:Name="Panel" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Margin="38,17,0,0" Width="380" >
-                        <TextBox  x:Name="SearchBox" FontFamily="Arial" FontSize="30" TextChanged="SearchBox_TextChanged" Height="{Binding ElementName=Panel}" TextWrapping="Wrap" Width="{Binding ElementName=Panel}"   />
-                        <Grid HorizontalAlignment="Right" Margin="0,2.125,1.875,2" Width="51.205">
-                            <Path Data="M0,4 C0,1.790861 1.790861,0 4,0 L49.08,0 C51.289139,0 53.08,1.790861 53.08,4 L53.08,46 C53.08,48.209139 51.289139,50 49.08,50 L4,50 C1.790861,50 0,48.209139 0,46 z" Stretch="Fill" Stroke="#FFABADB3" StrokeThickness="0" />
-                            <Path Data="M22.208,11.854 C22.208,17.572356 17.572356,22.208 11.854,22.208 C6.1356437,22.208 1.5,17.572356 1.5,11.854 C1.5,6.1356437 6.1356437,1.5 11.854,1.5 C17.572356,1.5 22.208,6.1356437 22.208,11.854 z" Margin="8.75,6.25,18.747,15.917" Stretch="Fill" Stroke="#FFABADB3" StrokeThickness="3" />
-                            <Path Data="M357.92,27.5 C374.17,43.25 373.92001,43 373.92001,43" Height="15.645" Margin="25,0,10.125,5.022" Stretch="Fill" Stroke="#FFABADB3" StrokeThickness="4" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5">
-                                <Path.RenderTransform>
-                                    <TransformGroup>
-                                        <ScaleTransform/>
-                                        <SkewTransform/>
-                                        <RotateTransform Angle="3.215"/>
-                                        <TranslateTransform/>
-                                    </TransformGroup>
-                                </Path.RenderTransform>
-                            </Path>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="92"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid x:Name="Panel" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Margin="38,17,0,0" Width="380" >
+                            <TextBox  x:Name="SearchBox" FontFamily="Arial" FontSize="30" TextChanged="SearchBox_TextChanged" Height="{Binding ElementName=Panel}" TextWrapping="Wrap" Width="{Binding ElementName=Panel}"   />
+                            <Grid HorizontalAlignment="Right" Margin="0,2.125,1.875,2" Width="51.205">
+                                <Path Data="M22.208,11.9165 C22.208,17.669374 17.572356,22.333 11.854,22.333 6.1356437,22.333 1.5,17.669374 1.5,11.9165 1.5,6.1636259 6.1356437,1.5 11.854,1.5 17.572356,1.5 22.208,6.1636259 22.208,11.9165 z M18.586039,20.753423 C30.171707,33.255499 29.993797,33.05739 29.993797,33.05739" Margin="8.75,6.25,10.961,5.192" Stretch="Fill" Stroke="#FFABADB3" StrokeThickness="3" />
+                            </Grid>
                         </Grid>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <ListView x:Name="listView1"  >
+                            <ListView.ContextMenu>
+                                <ContextMenu x:Name="ContexMMenu" Opened="ContexMMenu_Opened" ContextMenuOpening="ContexMMenu_ContextMenuOpening" >
+                                    <MenuItem x:Name="AddToBookmarks" Click="AddToBookmarks_Click" IsChecked="False" Template="{DynamicResource MenuItemControlTemplate}" Header="Add to Bookmarks"></MenuItem>
+                                    <MenuItem x:Name="RemoveFromBookmarks" Click="RemoveFromBookmarks_Click" IsChecked="False" Template="{DynamicResource MenuItemControlTemplate}" Header="Remove from Bookmarks"></MenuItem>
+                                    <Separator BorderThickness="1" BorderBrush="BurlyWood" Foreground="{x:Null}" Width="240" HorizontalAlignment="Left"></Separator>
+                                    <MenuItem x:Name="Edit" Click="Edit_Click" Template="{DynamicResource MenuItemControlTemplate}" Header="Edit" >
+                                    </MenuItem>
+                                    <Separator BorderThickness="1" BorderBrush="BurlyWood" Foreground="{x:Null}" Width="240" HorizontalAlignment="Left"></Separator>
+                                    <MenuItem x:Name="Delete" Click="Delete_Click" Template="{DynamicResource MenuItemControlTemplate}" Header="Delete"></MenuItem>
+                                </ContextMenu>
+                            </ListView.ContextMenu>
+                            <ListView.View>
+                                <GridView >
+                                    <GridViewColumn x:Name="Column1" Width="Auto" DisplayMemberBinding="{Binding Path=FullName}" Header="Name" />
+                                    <GridViewColumn x:Name="Column2" Width="Auto" DisplayMemberBinding="{Binding Path=Type}" Header="Type" />
+                                    <GridViewColumn x:Name="Column3" Width="Auto" DisplayMemberBinding="{Binding Path=AboutItem}" Header="About" />
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
                     </Grid>
                 </Grid>
             </TabItem>
-
             <TabItem x:Name="Bookmarks" Header="Bookmarks " Template="{DynamicResource TabItemControlTemplate1}">
-
                 <Grid>
                     <ListView x:Name="listView5" >
                         <!-- <ItemsControl.ItemsPanel>
@@ -96,7 +93,7 @@
                                 <Border BorderThickness="5" BorderBrush="Red">
                                     <StackPanel Orientation="Vertical" Height="160" Width="130" HorizontalAlignment="Left" VerticalAlignment="Top">
                                         <Image Source="{Binding ImageSource}" Style="{StaticResource ImageForItem}"/>
-                                        <TextBlock Text="{Binding Path=Name}" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="15" />
+                                        <TextBlock Text="{Binding Path=FullName}" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="15" />
                                         <TextBlock Text="{Binding Path=Type}" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="15" />
                                     </StackPanel>
                                 </Border>
@@ -108,132 +105,130 @@
 
             </TabItem>
 
-            <TabItem x:Name="Writers" Header="Writers" Template="{DynamicResource TabItemControlTemplate1}" Margin="-2,0,0,0" VerticalAlignment="Top" d:LayoutOverrides="Height">
+            <TabItem x:Name="Writers" Header="Writers" Template="{DynamicResource TabItemControlTemplate1}" VerticalAlignment="Top" d:LayoutOverrides="Height">
                 <Grid>
-                    <ListView x:Name="listView2" Margin="0,92,0,0" >
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition Width="130"/>
-                                        <ColumnDefinition/>
-                                    </Grid.ColumnDefinitions>
-                                    <Image Grid.Column="0" Style="{StaticResource ImageForItem}" Source="{Binding Path=ImageSource}" />
-                                    <StackPanel Orientation="Vertical" Grid.Column="1" Margin="10,0,0,0">
-                                        <TextBlock Grid.Column="1" Text="{Binding Path=Name}" FontSize="25" FontFamily="Bradley Hand ITC" />
-                                        <TextBlock Grid.Column="1" Text="{Binding Path=Surname}" FontSize="25" FontFamily="Bradley Hand ITC" />
-                                    </StackPanel>
-                                    <TextBlock Grid.Column="2" Padding="20,0,0,0" Text="{Binding Path=AboutItem}" />
-                                </Grid>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                        
-                    </ListView>
-                    <Grid x:Name="Panel2" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Margin="38,27,0,0" Width="380" >
-                        <TextBox x:Name="SearchBox2" Height="{Binding ElementName=Panel}" TextWrapping="NoWrap" />
-                        <Grid HorizontalAlignment="Right" Margin="2,2,5,2" Width="51.205">
-                            <Path Data="M0,4 C0,1.790861 1.790861,0 4,0 L49.08,0 C51.289139,0 53.08,1.790861 53.08,4 L53.08,46 C53.08,48.209139 51.289139,50 49.08,50 L4,50 C1.790861,50 0,48.209139 0,46 z" Stretch="Fill" Stroke="#FFABADB3" StrokeThickness="0" />
-                            <Path Data="M22.208,11.854 C22.208,17.572356 17.572356,22.208 11.854,22.208 C6.1356437,22.208 1.5,17.572356 1.5,11.854 C1.5,6.1356437 6.1356437,1.5 11.854,1.5 C17.572356,1.5 22.208,6.1356437 22.208,11.854 z" Margin="8.75,6.25,18.747,15.917" Stretch="Fill" Stroke="#FFABADB3" StrokeThickness="3" />
-                            <Path Data="M357.92,27.5 C374.17,43.25 373.92001,43 373.92001,43" Height="15.645" Margin="25,0,10.125,5.022" Stretch="Fill" Stroke="#FFABADB3" StrokeThickness="4" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5">
-                                <Path.RenderTransform>
-                                    <TransformGroup>
-                                        
-                                        <RotateTransform Angle="3.215"/>
-                                        <TranslateTransform/>
-                                    </TransformGroup>
-                                </Path.RenderTransform>
-                            </Path>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="92"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid x:Name="Panel2" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Margin="38,17,0,0" Width="380" >
+                            <TextBox x:Name="SearchBox2" Height="{Binding ElementName=Panel}" TextWrapping="NoWrap" />
+                            <Grid HorizontalAlignment="Right" Margin="2,2,5,2" Width="51.205">
+                                <Path Data="M22.208,11.9165 C22.208,17.669374 17.572356,22.333 11.854,22.333 6.1356437,22.333 1.5,17.669374 1.5,11.9165 1.5,6.1636259 6.1356437,1.5 11.854,1.5 17.572356,1.5 22.208,6.1636259 22.208,11.9165 z M18.586039,20.753423 C30.171707,33.255499 29.993797,33.05739 29.993797,33.05739" Margin="8.75,6.25,10.961,5.192" Stretch="Fill" Stroke="#FFABADB3" StrokeThickness="3" />
+                            </Grid>
                         </Grid>
+                        <Grid HorizontalAlignment="Right" Margin="0,10,281.146,17.099" Width="225.537">
+                            <TextBlock x:Name="textBlock2" Margin="0,13.293,86.506,0" TextWrapping="Wrap" Text="Sort by:" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
+                            <RadioButton x:Name="WriterNameSortRadio" VerticalContentAlignment="Center" Content="Name"  Margin="106.672,0,42.946,28.486" d:LayoutOverrides="Width, Height" FontWeight="Bold" FontSize="21" Click="WriterNameSortRadio_Click" RenderTransformOrigin="-0.045,0.549"/>
+                            <RadioButton x:Name="WriterSurnameSortRadio" VerticalContentAlignment="Center" Content="Surname" HorizontalAlignment="Right"  Margin="0,28.485,12.908,0" FontWeight="Bold" FontSize="21" d:LayoutOverrides="Height" Click="WriterSurnameSortRadio_Click"/>
+                        </Grid>
+                        <Button x:Name="Add1" Style="{DynamicResource AddButtonStyle}" Click="Add1_Click" BorderBrush="#FF7EB4EA" BorderThickness="3"   Content="Add Writer" VerticalAlignment="Top" Margin="0,17,40,0" Height="50" HorizontalContentAlignment="Left" HorizontalAlignment="Right" Width="202" />
                     </Grid>
-                    <Button x:Name="Add1" Style="{DynamicResource ButtonStyle}" Click="Add1_Click" BorderBrush="#FF7EB4EA" BorderThickness="3"   Content="Add Writer" VerticalAlignment="Top" Margin="0,27,40,0" Height="50" HorizontalContentAlignment="Center" HorizontalAlignment="Right" />
+                    <Grid Grid.Row="1">
+                        <ListView x:Name="listView2"  >
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition Width="130"/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        <Image Grid.Column="0" Style="{StaticResource ImageForItem}" Source="{Binding Path=ImageSource}" />
+                                        <StackPanel Orientation="Vertical" Grid.Column="1" Margin="10,0,0,0">
+                                            <TextBlock Grid.Column="1" Text="{Binding Path=Name}" FontSize="25" FontFamily="Bradley Hand ITC" />
+                                            <TextBlock Grid.Column="1" Text="{Binding Path=Surname}" FontSize="25" FontFamily="Bradley Hand ITC" />
+                                        </StackPanel>
+                                        <TextBlock Grid.Column="2" Padding="20,0,0,0" Text="{Binding Path=AboutItem}" />
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+
                 </Grid>
             </TabItem>
             <TabItem x:Name="Books" Header="Books" Template="{DynamicResource TabItemControlTemplate1}">
                 <Grid>
-                    <ListView x:Name="listView3" Margin="0,92,0,0" >
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition Width="200"/>
-                                        <ColumnDefinition/>
-                                    </Grid.ColumnDefinitions>
-                                    <Image Grid.Column="0" Style="{StaticResource ImageForItem}" Source="{Binding Path=ImageSource}" />
-                                    <TextBlock Grid.Column="1" Margin="10,0,10,0" TextWrapping="WrapWithOverflow" Text="{Binding Path=Name}" FontFamily="Bradley Hand ITC" />
-                                    <TextBlock Grid.Column="2" Margin="10,0,10,0" Text="{Binding Path=About}" />
-                                </Grid>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-
-                    </ListView>
-                    <Grid x:Name="Panel3" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Margin="38,27,0,0" Width="380" >
-                        <TextBox x:Name="SearchBox3" Height="{Binding ElementName=Panel}" TextWrapping="NoWrap"/>
-                        <Grid HorizontalAlignment="Right" Margin="2,2,5,2" Width="51.205">
-                            <Path Data="M0,4 C0,1.790861 1.790861,0 4,0 L49.08,0 C51.289139,0 53.08,1.790861 53.08,4 L53.08,46 C53.08,48.209139 51.289139,50 49.08,50 L4,50 C1.790861,50 0,48.209139 0,46 z" Stretch="Fill" Stroke="#FFABADB3" StrokeThickness="0" />
-                            <Path Data="M22.208,11.854 C22.208,17.572356 17.572356,22.208 11.854,22.208 C6.1356437,22.208 1.5,17.572356 1.5,11.854 C1.5,6.1356437 6.1356437,1.5 11.854,1.5 C17.572356,1.5 22.208,6.1356437 22.208,11.854 z" Margin="8.75,6.25,18.747,15.917" Stretch="Fill" Stroke="#FFABADB3" StrokeThickness="3" />
-                            <Path Data="M357.92,27.5 C374.17,43.25 373.92001,43 373.92001,43" Height="15.645" Margin="25,0,10.125,5.022" Stretch="Fill" Stroke="#FFABADB3" StrokeThickness="4" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5">
-                                <Path.RenderTransform>
-                                    <TransformGroup>
-                                        <ScaleTransform/>
-                                        <SkewTransform/>
-                                        <RotateTransform Angle="3.215"/>
-                                        <TranslateTransform/>
-                                    </TransformGroup>
-                                </Path.RenderTransform>
-                            </Path>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="92"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid x:Name="Panel3" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Margin="38,17,0,0" Width="380" >
+                            <TextBox x:Name="SearchBox3" Height="{Binding ElementName=Panel}" TextWrapping="NoWrap"/>
+                            <Grid HorizontalAlignment="Right" Margin="2,2,5,2" Width="51.205">
+                                <Path Data="M22.208,11.9165 C22.208,17.669374 17.572356,22.333 11.854,22.333 6.1356437,22.333 1.5,17.669374 1.5,11.9165 1.5,6.1636259 6.1356437,1.5 11.854,1.5 17.572356,1.5 22.208,6.1636259 22.208,11.9165 z M18.586039,20.753423 C30.171707,33.255499 29.993797,33.05739 29.993797,33.05739" Margin="8.75,6.25,10.961,5.192" Stretch="Fill" Stroke="#FFABADB3" StrokeThickness="3" />
+                            </Grid>
+                        </Grid>
+                        <Button x:Name="Add2" Style="{DynamicResource AddButtonStyle}"  Click="Add2_Click" BorderBrush="#FF7EB4EA" BorderThickness="3"  Content="Add Book" VerticalAlignment="Top" Margin="0,17,40,0" Height="50" HorizontalContentAlignment="Left" HorizontalAlignment="Right" Width="184"/>
+                        <Grid HorizontalAlignment="Right" Margin="0,10,316.48,17.099" Width="190.203">
+                            <TextBlock x:Name="textBlock" Margin="0,13.293,86.506,0" TextWrapping="Wrap" Text="Sort by:" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
+                            <RadioButton x:Name="BookNameSortRadio" VerticalContentAlignment="Center" Content="Name" HorizontalAlignment="Right"  Margin="0,0,-0.001,28.486" d:LayoutOverrides="Height" FontWeight="Bold" FontSize="21" Click="BookNameSortRadio_Click"/>
+                            <RadioButton x:Name="BookDateSortRadio" VerticalContentAlignment="Center" Content="Date" HorizontalAlignment="Right"  Margin="0,28.485,12.908,0" FontWeight="Bold" FontSize="21" d:LayoutOverrides="Height" Click="BookDateSortRadio_Click"/>
                         </Grid>
                     </Grid>
-                    <Button x:Name="Add2" Style="{DynamicResource ButtonStyle}"  Click="Add2_Click" BorderBrush="#FF7EB4EA" BorderThickness="3"  Content="Add Book" VerticalAlignment="Top" Margin="0,27,40,0" Height="50" HorizontalContentAlignment="Center" HorizontalAlignment="Right" />
+                    <Grid Grid.Row="1">
+                        <ListView x:Name="listView3" >
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition Width="200"/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        <Image Grid.Column="0" Style="{StaticResource ImageForItem}" Source="{Binding Path=ImageSource}" />
+                                        <TextBlock Grid.Column="1" Margin="10,0,10,0" TextWrapping="WrapWithOverflow" Text="{Binding Path=Name}" FontFamily="Bradley Hand ITC" />
+                                        <TextBlock Grid.Column="2" Margin="10,0,10,0" Text="{Binding Path=About}" />
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
                 </Grid>
             </TabItem>
             <TabItem x:Name="Newspapers" Header="Newspapers" Template="{DynamicResource TabItemControlTemplate1}">
-
                 <Grid>
-                    <ListView x:Name="listView4" Margin="0,92,0,0" >
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition Width="200"/>
-                                        <ColumnDefinition/>
-                                    </Grid.ColumnDefinitions>
-                                    <Image Grid.Column="0" Style="{StaticResource ImageForItem}" Source="{Binding Path=ImageSource}" />
-                                    <TextBlock Grid.Column="1" Text="{Binding Path=Name}" Margin="10,0,10,0" TextWrapping="WrapWithOverflow" FontFamily="Bradley Hand ITC"/>
-                                    <TextBlock Grid.Column="2" Text="{Binding Path=About}"/>
-                                </Grid>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-
-                    </ListView>
-                    <Grid x:Name="Panel4" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Margin="38,27,0,0" Width="380" >
-                        <TextBox x:Name="SearchBox4" Height="{Binding ElementName=Panel}" TextWrapping="NoWrap" ToolTip=""/>
-                        <Grid HorizontalAlignment="Right" Margin="2,2,5,2" Width="51.205">
-                            <Path Data="M0,4 C0,1.790861 1.790861,0 4,0 L49.08,0 C51.289139,0 53.08,1.790861 53.08,4 L53.08,46 C53.08,48.209139 51.289139,50 49.08,50 L4,50 C1.790861,50 0,48.209139 0,46 z" Stretch="Fill" Stroke="#FFABADB3" StrokeThickness="0" />
-                            <Path Data="M22.208,11.854 C22.208,17.572356 17.572356,22.208 11.854,22.208 C6.1356437,22.208 1.5,17.572356 1.5,11.854 C1.5,6.1356437 6.1356437,1.5 11.854,1.5 C17.572356,1.5 22.208,6.1356437 22.208,11.854 z" Margin="8.75,6.25,18.747,15.917" Stretch="Fill" Stroke="#FFABADB3" StrokeThickness="3" />
-                            <Path Data="M357.92,27.5 C374.17,43.25 373.92001,43 373.92001,43" Height="15.645" Margin="25,0,10.125,5.022" Stretch="Fill" Stroke="#FFABADB3" StrokeThickness="4" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5">
-                                <Path.RenderTransform>
-                                    <TransformGroup>
-                                        <ScaleTransform/>
-                                        <SkewTransform/>
-                                        <RotateTransform Angle="3.215"/>
-                                        <TranslateTransform/>
-                                    </TransformGroup>
-                                </Path.RenderTransform>
-                            </Path>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="92"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid x:Name="Panel4" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Margin="38,17,0,0" Width="380" >
+                            <TextBox x:Name="SearchBox4" Height="{Binding ElementName=Panel}" TextWrapping="NoWrap" ToolTip=""/>
+                            <Grid HorizontalAlignment="Right" Margin="2,2,5,2" Width="51.205">
+                                <Path Data="M22.208,11.9165 C22.208,17.669374 17.572356,22.333 11.854,22.333 6.1356437,22.333 1.5,17.669374 1.5,11.9165 1.5,6.1636259 6.1356437,1.5 11.854,1.5 17.572356,1.5 22.208,6.1636259 22.208,11.9165 z M18.586039,20.753423 C30.171707,33.255499 29.993797,33.05739 29.993797,33.05739" Margin="8.75,6.25,10.961,5.192" Stretch="Fill" Stroke="#FFABADB3" StrokeThickness="3" />
+                            </Grid>
                         </Grid>
+                        <Grid Margin="500.757,10,324.48,17.099">
+                            <TextBlock x:Name="textBlock3" Margin="0,13.293,77.583,0" TextWrapping="Wrap" Text="Sort by:" VerticalAlignment="Top"/>
+                            <RadioButton x:Name="NewspaperNameSortRadio" VerticalContentAlignment="Center" Content="Name" HorizontalAlignment="Right"  Margin="0,14.291,0,14.194" d:LayoutOverrides="Height" FontWeight="Bold" FontSize="21" Click="NewspaperNameSortRadio_Click"/>
+                        </Grid>
+                        <Button x:Name="Add3" Style="{DynamicResource AddButtonStyle}" Click="Add3_Click" BorderBrush="#FF7EB4EA" BorderThickness="3"  Content="Add Newspaper" VerticalAlignment="Top" Margin="0,17,40,0" Height="50" HorizontalContentAlignment="Left" HorizontalAlignment="Right" Width="253" />
                     </Grid>
-                    <Button x:Name="Add3" Style="{DynamicResource ButtonStyle}" Click="Add3_Click" BorderBrush="#FF7EB4EA" BorderThickness="3"  Content="Add Newspaper" VerticalAlignment="Top" Margin="0,27,40,0" Height="50" HorizontalContentAlignment="Center" HorizontalAlignment="Right" />
+                    <Grid Grid.Row="1">
+                        <ListView x:Name="listView4" Margin="-2" Background="#FFF5ECD3"  BorderThickness="0,1,0,0" Template="{DynamicResource ListBoxControlTemplate}" >
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition Width="200"/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        <Image Grid.Column="0" Style="{StaticResource ImageForItem}" Source="{Binding Path=ImageSource}" />
+                                        <TextBlock Grid.Column="1" Text="{Binding Path=Name}" Margin="10,0,10,0" TextWrapping="WrapWithOverflow" FontFamily="Bradley Hand ITC"/>
+                                        <TextBlock Grid.Column="2" Text="{Binding Path=About}"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
                 </Grid>
-
             </TabItem>
-
-
-
         </TabControl>
-
     </Grid>
 </Window>
 

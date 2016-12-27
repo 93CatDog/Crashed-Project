@@ -14,10 +14,10 @@
 
         <Style TargetType="TabItem">
             <Setter Property="Height" Value="60" />
-            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Background" Value="Transparent"/>
             <Setter Property="FontSize" Value="30" />
             <Setter Property="FontFamily" Value="Bradley Hand ITC"/>
-            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="#FFC37E7E" />
         </Style>
 
         <Style TargetType="TabControl">
@@ -50,12 +50,12 @@
                     </Grid>
                 </DataTemplate>
             </TabControl.ItemTemplate>
-            <TabItem x:Name="Item1" Header="Writers" Template="{DynamicResource TabItemControlTemplate1}">
+            <TabItem x:Name="Item1" Header="Writer" Template="{DynamicResource TabItemControlTemplate1}">
                 <Grid>
                     <Border BorderThickness="3" Width="200" Height="200" HorizontalAlignment="Left" Margin="41.491,27.5,0,0" VerticalAlignment="Top" d:LayoutOverrides="Height" BorderBrush="#FF9996BF">
                         <Image x:Name="WrtPhoto" Width="200" Height="200" Source="pack://application:,,,/Books_and_Magazines;component/DefaultWriter.png"  />
                     </Border>
-                    <Button x:Name="AddWrtPhoto_btn" Content="Add photo" Click="AddWrtPhoto_Click" Height="41"  VerticalAlignment="Bottom" HorizontalAlignment="Left"  Margin="55.491,0,0,177" Style="{DynamicResource ButtonStyle}" />
+                    <Button x:Name="AddWrtPhoto_btn" Content="Add photo" Click="AddWrtPhoto_Click" Height="50"  VerticalAlignment="Bottom" HorizontalAlignment="Left"  Margin="47.491,0,0,164.713" Style="{DynamicResource AddButtonStyle}" Width="186" />
                     <TextBlock  Height="35.886" TextWrapping="Wrap" Text="Name:" Width="86" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="366.497,27.5,0,0"/>
                     <TextBlock  HorizontalAlignment="Left" Margin="325,78,0,0" TextWrapping="Wrap" Text="Surname:" VerticalAlignment="Top"/>
                     <TextBox x:Name="WrtName"  Height="33" Margin="457.497,30.386,247.486,0" TextWrapping="NoWrap" VerticalAlignment="Top"/>
@@ -72,13 +72,13 @@
                     <TextBlock x:Name="Book_3" TextWrapping="Wrap" Margin="0,223.165,38.486,202.421" HorizontalAlignment="Right" Width="190.501" FontSize="12" d:LayoutOverrides="Height"/>
                     <TextBlock x:Name="Book_2" TextWrapping="Wrap" Margin="0,223.165,261.003,202.421" HorizontalAlignment="Right" Width="183.984" FontSize="12" d:LayoutOverrides="Height"/>
                     <TextBlock x:Name="Book_1" TextWrapping="Wrap" Margin="283.996,223.165,460.486,202.42" d:LayoutOverrides="Height" FontSize="12"/>
-                    <Button x:Name="Save_btn" Content="Save" Click="Save_Wrt_btn_Click" Height="41"  VerticalAlignment="Bottom" Margin="0,0,19.486,10" HorizontalAlignment="Right" Width="120" Style="{DynamicResource ButtonStyle}" />
+                    <Button x:Name="Save_btn" Content="Save" Click="Save_Wrt_btn_Click" Height="41"  VerticalAlignment="Bottom" Margin="0,0,19.486,10" HorizontalAlignment="Right" Width="120" Style="{DynamicResource SaveButtonStyle}" />
                 </Grid>
             </TabItem>
-            <TabItem x:Name="Item2" Header="Books" Template="{DynamicResource TabItemControlTemplate1}">
+            <TabItem x:Name="Item2" Header="Book" Template="{DynamicResource TabItemControlTemplate1}">
 
             </TabItem>
-            <TabItem x:Name="Item3" Header="Newspapers" Template="{DynamicResource TabItemControlTemplate1}">
+            <TabItem x:Name="Item3" Header="Newspaper " Template="{DynamicResource TabItemControlTemplate1}">
 
             </TabItem>
         </TabControl>

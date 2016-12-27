@@ -33,8 +33,15 @@ namespace Books_and_Magazines
         private List<Writer> mWritersList = new List<Writer>();
         private Publishing mPublishing;
         private string mImageSource = "pack://application:,,,/Books_and_Magazines;component/DefaultBook.png";
-        private string mFileSource;                                     
+        private string mFileSource;
 
+        public string FullName
+        {
+            get
+            {
+                return this.mName;
+            }
+        }
         public string Name
         {
             get
@@ -167,7 +174,7 @@ namespace Books_and_Magazines
                 {
                     foreach (var item in WritersList)
                     {
-                        str += item.Name + ", ";
+                        str += item.Name + " " + item.Surname + ", ";
                     }
                     str = str.Remove(str.Length - 2);
                 }
