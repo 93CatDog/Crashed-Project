@@ -271,7 +271,7 @@ namespace Books_and_Magazines
         {
             // MessageBox.Show(listView1.SelectedItem.GetType().Name.ToString());
             object obj = listView1.SelectedItem;
-            MessageBox.Show(obj.Equals(minfo.Writers.Find(item => item.Name.Contains((obj as Writer).Name))).ToString());
+            //MessageBox.Show(obj.Equals(minfo.Writers.Find(item => item.Name.Contains((obj as Writer).Name))).ToString());
             switch (listView1.SelectedItem.GetType().Name)
             {
                 case "Writer":
