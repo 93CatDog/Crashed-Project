@@ -25,7 +25,9 @@ namespace Books_and_Magazines
         private MAIN wn;
         private Book book;
         private string Source = Assembly.GetExecutingAssembly().Location.ToString();
-        private Info NewInfo;
+        private Info mlocalbookmarks = new Info();
+        private string fileName2 = "Bookmarks.txt";
+
         public BookWindow(MAIN w)
         {
             InitializeComponent();
@@ -39,9 +41,18 @@ namespace Books_and_Magazines
             {
                 this.book = (Book)w.listView3.SelectedItem;
             }
-            this.image.Source = new BitmapImage(new Uri(this.book.ImageSource)); 
-
+            if(this.image.Source != null)
+                this.image.Source = new BitmapImage(new Uri(this.book.ImageSource)); 
+            else
+                this.image.Source = new BitmapImage(new Uri("pack://application:,,,/Books_and_Magazines;component/DefaultBook.png"));
             
+            this.BookName.Text = " " + book.FullName;
+            this.Date.Text = " " + this.book.Date.ToString();
+            this.Genre.Text = " " + this.book.Genre;
+            this.Writers.Text = " " + this.book.AllBooks;
+            this.Publishing.Text = " " + this.book.Publishing.Name;
+            this.Annotation.Text = " " + this.book.Annotation;
+
 
             if (this.book.FileSource != String.Empty || this.book.FileSource != null)
             {
@@ -63,18 +74,16 @@ namespace Books_and_Magazines
             //MessageBox.Show(this.Source);
         }
 
-        /*
-        public void test()
+        private void AddToBookmarksBtn_Click(object sender, RoutedEventArgs e)
         {
-            Book b = new Book("Za", "rom", "da", 1900);
-            NewInfo = new Info();
-            NewInfo = NewInfo.LoadFromBinaryFile("TEXT.txt");
-            this.NewInfo.Add_Books(b);
-            NewInfo.LoadToBinaryFile("TEXT.txt");
-            this.wn.listView1.Items.Clear();
-            this.wn.listView3.Items.Clear();
-            this.wn.View();
+            //Book tmp;
+            //tmp = this.mlocalbookmarks.Books.Find(item => item.Name.Equals(book.Name));
+            //if (tmp == null)
+            //{
+            //    mlocalbookmarks.Add_Books(book);
+            //    mlocalbookmarks.LoadToBinaryFile(fileName2);
+            //    this.wn.ViewBookmarks();
+            //}
         }
-        */
     }
 }

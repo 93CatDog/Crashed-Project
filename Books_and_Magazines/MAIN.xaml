@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Books_and_Magazines"
         mc:Ignorable="d"
-        Title="MAIN" Icon="icon.png" WindowStartupLocation="Manual" Width="1200">
+        Title="Library" Icon="icon.png" WindowStartupLocation="Manual" Width="1200">
     <Window.Resources>
         <Style TargetType="ListView">
             <Setter Property="ScrollViewer.CanContentScroll" Value="False"/>
-            <Setter Property="Background" Value="#FFF5ECD3"/>
+            
             <Setter Property="Margin" Value="-2"/>
         </Style>
         <Style TargetType="TabItem">
@@ -52,10 +52,16 @@
                         <RowDefinition Height="92"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <Grid Grid.Row="0">
-                        <Grid x:Name="Panel" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Margin="38,17,0,0" Width="380" >
+                    <Grid Margin="-2" Grid.Row="0">
+                        <Grid.Background>
+                            <LinearGradientBrush EndPoint="1,1" MappingMode="RelativeToBoundingBox" StartPoint="0,0">
+                                <GradientStop Color="White" Offset="1"/>
+                                <GradientStop Color="#FFFDBA82"/>
+                            </LinearGradientBrush>
+                        </Grid.Background>
+                        <Grid x:Name="Panel" Background="#FFFDBA82" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Margin="38,17,0,0" Width="380" >
                             <TextBox  x:Name="SearchBox" FontFamily="Arial" FontSize="30" TextChanged="SearchBox_TextChanged" Height="{Binding ElementName=Panel}" TextWrapping="Wrap" Width="{Binding ElementName=Panel}"   />
-                            <Grid HorizontalAlignment="Right" Margin="0,2.125,1.875,2" Width="51.205">
+                            <Grid HorizontalAlignment="Right" Margin="0,2,5,2" Width="51.205">
                                 <Path Data="M22.208,11.9165 C22.208,17.669374 17.572356,22.333 11.854,22.333 6.1356437,22.333 1.5,17.669374 1.5,11.9165 1.5,6.1636259 6.1356437,1.5 11.854,1.5 17.572356,1.5 22.208,6.1636259 22.208,11.9165 z M18.586039,20.753423 C30.171707,33.255499 29.993797,33.05739 29.993797,33.05739" Margin="8.75,6.25,10.961,5.192" Stretch="Fill" Stroke="#FFABADB3" StrokeThickness="3" />
                             </Grid>
                         </Grid>
@@ -63,7 +69,7 @@
                     <Grid Grid.Row="1">
                         <ListView x:Name="listView1"  >
                             <ListView.ContextMenu>
-                                <ContextMenu x:Name="ContexMMenu" Opened="ContexMMenu_Opened" ContextMenuOpening="ContexMMenu_ContextMenuOpening" >
+                                <ContextMenu x:Name="ContexMMenu" Opened="ContexMMenu1_Opened">
                                     <MenuItem x:Name="AddToBookmarks" Click="AddToBookmarks_Click" IsChecked="False" Template="{DynamicResource MenuItemControlTemplate}" Header="Add to Bookmarks"></MenuItem>
                                     <MenuItem x:Name="RemoveFromBookmarks" Click="RemoveFromBookmarks_Click" IsChecked="False" Template="{DynamicResource MenuItemControlTemplate}" Header="Remove from Bookmarks"></MenuItem>
                                     <Separator BorderThickness="1" BorderBrush="BurlyWood" Foreground="{x:Null}" Width="240" HorizontalAlignment="Left"></Separator>
@@ -86,18 +92,30 @@
             </TabItem>
             <TabItem x:Name="Bookmarks" Header="Bookmarks " Template="{DynamicResource TabItemControlTemplate1}">
                 <Grid>
-                    <ListView x:Name="listView5" >
-                        <!-- <ItemsControl.ItemsPanel>
+                    <ListView x:Name="listView5">
+                        <ListView.ContextMenu>
+                            <ContextMenu x:Name="ContexMMenu1" Opened="ContexMMenu1_Opened" >
+                                <MenuItem x:Name="AddToBookmarks1" Click="AddToBookmarks_Click" IsChecked="False" Template="{DynamicResource MenuItemControlTemplate}" Header="Add to Bookmarks"></MenuItem>
+                                <MenuItem x:Name="RemoveFromBookmarks1" Click="RemoveFromBookmarks_Click" IsChecked="False" Template="{DynamicResource MenuItemControlTemplate}" Header="Remove from Bookmarks"></MenuItem>
+                                <Separator BorderThickness="1" BorderBrush="BurlyWood" Foreground="{x:Null}" Width="240" HorizontalAlignment="Left"></Separator>
+                                <MenuItem x:Name="Edit1" Click="Edit_Click" Template="{DynamicResource MenuItemControlTemplate}" Header="Edit" >
+                                </MenuItem>
+                                <Separator BorderThickness="1" BorderBrush="BurlyWood" Foreground="{x:Null}" Width="240" HorizontalAlignment="Left"></Separator>
+                                <MenuItem x:Name="Delete1" Click="Delete_Click" Template="{DynamicResource MenuItemControlTemplate}" Header="Delete"></MenuItem>
+                            </ContextMenu>
+                        </ListView.ContextMenu>
+                        <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <UniformGrid Columns="5" HorizontalAlignment="Stretch"/>
+                                <UniformGrid Columns="10" Height="180" VerticalAlignment="Top">
+                                </UniformGrid>
                             </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>-->
+                        </ItemsControl.ItemsPanel>
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <Border BorderThickness="5" BorderBrush="Red">
-                                    <StackPanel Orientation="Vertical" Height="160" Width="130" HorizontalAlignment="Left" VerticalAlignment="Top">
+                                <Border BorderThickness="3" BorderBrush="Red">
+                                    <StackPanel Orientation="Vertical" Height="180" Width="160" HorizontalAlignment="Left" VerticalAlignment="Top">
                                         <Image Source="{Binding ImageSource}" Style="{StaticResource ImageForItem}"/>
-                                        <TextBlock Text="{Binding Path=FullName}" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="15" />
+                                        <TextBlock Text="{Binding Path=FullName}" TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="15" />
                                         <TextBlock Text="{Binding Path=Type}" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="15" />
                                     </StackPanel>
                                 </Border>
@@ -109,20 +127,26 @@
 
             </TabItem>
 
-            <TabItem x:Name="Writers" Header="Writers" Template="{DynamicResource TabItemControlTemplate1}" VerticalAlignment="Top" d:LayoutOverrides="Height">
+            <TabItem x:Name="Writers" Header="Writers" Template="{DynamicResource TabItemControlTemplate1}" VerticalAlignment="Bottom" d:LayoutOverrides="Height">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="92"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <Grid Grid.Row="0">
-                        <Grid x:Name="Panel2" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Margin="38,17,0,0" Width="380" >
-                            <TextBox x:Name="SearchBox2" Height="{Binding ElementName=Panel}" TextWrapping="NoWrap" />
+                    <Grid Margin="-2" Grid.Row="0">
+                        <Grid.Background>
+                            <LinearGradientBrush EndPoint="1,1" MappingMode="RelativeToBoundingBox" StartPoint="0,0">
+                                <GradientStop Color="White" Offset="1"/>
+                                <GradientStop Color="#FFFDBA82"/>
+                            </LinearGradientBrush>
+                        </Grid.Background>
+                        <Grid x:Name="Panel2" Background="#FFFDBA82" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Margin="38,17,0,0" Width="380" >
+                            <TextBox x:Name="SearchBox2" Height="{Binding ElementName=Panel}" TextChanged="SearchBox2_TextChanged" TextWrapping="NoWrap" />
                             <Grid HorizontalAlignment="Right" Margin="2,2,5,2" Width="51.205">
                                 <Path Data="M22.208,11.9165 C22.208,17.669374 17.572356,22.333 11.854,22.333 6.1356437,22.333 1.5,17.669374 1.5,11.9165 1.5,6.1636259 6.1356437,1.5 11.854,1.5 17.572356,1.5 22.208,6.1636259 22.208,11.9165 z M18.586039,20.753423 C30.171707,33.255499 29.993797,33.05739 29.993797,33.05739" Margin="8.75,6.25,10.961,5.192" Stretch="Fill" Stroke="#FFABADB3" StrokeThickness="3" />
                             </Grid>
                         </Grid>
-                        <Grid HorizontalAlignment="Right" Margin="0,10,281.146,17.099" Width="225.537">
+                        <Grid HorizontalAlignment="Right" Margin="0,10,281.146,17.099" Background="Transparent" Width="225.537">
                             <TextBlock x:Name="textBlock2" Margin="0,13.293,86.506,0" TextWrapping="Wrap" Text="Sort by:" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
                             <RadioButton x:Name="WriterNameSortRadio" VerticalContentAlignment="Center" Content="Name"  Margin="106.672,0,42.946,28.486" d:LayoutOverrides="Width, Height" FontWeight="Bold" FontSize="21" Click="WriterNameSortRadio_Click" RenderTransformOrigin="-0.045,0.549"/>
                             <RadioButton x:Name="WriterSurnameSortRadio" VerticalContentAlignment="Center" Content="Surname" HorizontalAlignment="Right"  Margin="0,28.485,12.908,0" FontWeight="Bold" FontSize="21" d:LayoutOverrides="Height" Click="WriterSurnameSortRadio_Click"/>
@@ -131,6 +155,17 @@
                     </Grid>
                     <Grid Grid.Row="1">
                         <ListView x:Name="listView2"  >
+                            <ListView.ContextMenu>
+                                <ContextMenu x:Name="ContexMMenu2" Opened="ContexMMenu1_Opened" >
+                                    <MenuItem x:Name="AddToBookmarks2" Click="AddToBookmarks_Click" IsChecked="False" Template="{DynamicResource MenuItemControlTemplate}" Header="Add to Bookmarks"></MenuItem>
+                                    <MenuItem x:Name="RemoveFromBookmarks2" Click="RemoveFromBookmarks_Click" IsChecked="False" Template="{DynamicResource MenuItemControlTemplate}" Header="Remove from Bookmarks"></MenuItem>
+                                    <Separator BorderThickness="1" BorderBrush="BurlyWood" Foreground="{x:Null}" Width="240" HorizontalAlignment="Left"></Separator>
+                                    <MenuItem x:Name="Edit2" Click="Edit_Click" Template="{DynamicResource MenuItemControlTemplate}" Header="Edit" >
+                                    </MenuItem>
+                                    <Separator BorderThickness="1" BorderBrush="BurlyWood" Foreground="{x:Null}" Width="240" HorizontalAlignment="Left"></Separator>
+                                    <MenuItem x:Name="Delete2" Click="Delete_Click" Template="{DynamicResource MenuItemControlTemplate}" Header="Delete"></MenuItem>
+                                </ContextMenu>
+                            </ListView.ContextMenu>
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <Grid>
@@ -141,10 +176,10 @@
                                         </Grid.ColumnDefinitions>
                                         <Image Grid.Column="0" Style="{StaticResource ImageForItem}" Source="{Binding Path=ImageSource}" />
                                         <StackPanel Orientation="Vertical" Grid.Column="1" Margin="10,0,0,0">
-                                            <TextBlock Grid.Column="1" Text="{Binding Path=Name}" FontSize="25" FontFamily="Bradley Hand ITC" />
-                                            <TextBlock Grid.Column="1" Text="{Binding Path=Surname}" FontSize="25" FontFamily="Bradley Hand ITC" />
+                                            <TextBlock  Text="{Binding Path=Name}" FontSize="25" FontFamily="Bradley Hand ITC" />
+                                            <TextBlock  Text="{Binding Path=Surname}" FontSize="25" FontFamily="Bradley Hand ITC" />
                                         </StackPanel>
-                                        <TextBlock Grid.Column="2" Padding="20,0,0,0" Text="{Binding Path=AboutItem}" />
+                                        <TextBlock Grid.Column="2" Padding="20,0,0,0" Text="{Binding Path=About}" />
                                     </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
@@ -155,19 +190,31 @@
             </TabItem>
             <TabItem x:Name="Books" Header="Books" Template="{DynamicResource TabItemControlTemplate1}">
                 <Grid>
+                    <Grid.Background>
+                            <LinearGradientBrush EndPoint="1,1" MappingMode="RelativeToBoundingBox" StartPoint="0,0">
+                                <GradientStop Color="White" Offset="1"/>
+                                <GradientStop Color="#FFFDBA82"/>
+                            </LinearGradientBrush>
+                        </Grid.Background>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="92"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <Grid Grid.Row="0">
-                        <Grid x:Name="Panel3" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Margin="38,17,0,0" Width="380" >
-                            <TextBox x:Name="SearchBox3" Height="{Binding ElementName=Panel}" TextWrapping="NoWrap"/>
+                    <Grid Margin="-2" Grid.Row="0">
+                        <Grid.Background>
+                            <LinearGradientBrush EndPoint="1,1" MappingMode="RelativeToBoundingBox" StartPoint="0,0">
+                                <GradientStop Color="White" Offset="1"/>
+                                <GradientStop Color="#FFFDBA82"/>
+                            </LinearGradientBrush>
+                        </Grid.Background>
+                        <Grid x:Name="Panel3" Background="#FFFDBA82" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Margin="38,17,0,0" Width="380" >
+                            <TextBox x:Name="SearchBox3" Height="{Binding ElementName=Panel}" TextChanged="SearchBox3_TextChanged" TextWrapping="NoWrap"/>
                             <Grid HorizontalAlignment="Right" Margin="2,2,5,2" Width="51.205">
                                 <Path Data="M22.208,11.9165 C22.208,17.669374 17.572356,22.333 11.854,22.333 6.1356437,22.333 1.5,17.669374 1.5,11.9165 1.5,6.1636259 6.1356437,1.5 11.854,1.5 17.572356,1.5 22.208,6.1636259 22.208,11.9165 z M18.586039,20.753423 C30.171707,33.255499 29.993797,33.05739 29.993797,33.05739" Margin="8.75,6.25,10.961,5.192" Stretch="Fill" Stroke="#FFABADB3" StrokeThickness="3" />
                             </Grid>
                         </Grid>
                         <Button x:Name="Add2" Style="{DynamicResource AddButtonStyle}"  Click="Add2_Click" BorderBrush="#FF7EB4EA" BorderThickness="3"  Content="Add Book" VerticalAlignment="Top" Margin="0,17,40,0" Height="50" HorizontalContentAlignment="Left" HorizontalAlignment="Right" Width="184"/>
-                        <Grid HorizontalAlignment="Right" Margin="0,10,316.48,17.099" Width="190.203">
+                        <Grid HorizontalAlignment="Right" Margin="0,10,316.48,17.099" Background="Transparent" Width="190.203">
                             <TextBlock x:Name="textBlock" Margin="0,13.293,86.506,0" TextWrapping="Wrap" Text="Sort by:" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
                             <RadioButton x:Name="BookNameSortRadio" VerticalContentAlignment="Center" Content="Name" HorizontalAlignment="Right"  Margin="0,0,-0.001,28.486" d:LayoutOverrides="Height" FontWeight="Bold" FontSize="21" Click="BookNameSortRadio_Click"/>
                             <RadioButton x:Name="BookDateSortRadio" VerticalContentAlignment="Center" Content="Date" HorizontalAlignment="Right"  Margin="0,28.485,12.908,0" FontWeight="Bold" FontSize="21" d:LayoutOverrides="Height" Click="BookDateSortRadio_Click"/>
@@ -175,6 +222,17 @@
                     </Grid>
                     <Grid Grid.Row="1">
                         <ListView x:Name="listView3" >
+                            <ListView.ContextMenu>
+                                <ContextMenu x:Name="ContexMMenu3" Opened="ContexMMenu1_Opened" >
+                                    <MenuItem x:Name="AddToBookmarks3" Click="AddToBookmarks_Click" IsChecked="False" Template="{DynamicResource MenuItemControlTemplate}" Header="Add to Bookmarks"></MenuItem>
+                                    <MenuItem x:Name="RemoveFromBookmarks3" Click="RemoveFromBookmarks_Click" IsChecked="False" Template="{DynamicResource MenuItemControlTemplate}" Header="Remove from Bookmarks"></MenuItem>
+                                    <Separator BorderThickness="1" BorderBrush="BurlyWood" Foreground="{x:Null}" Width="240" HorizontalAlignment="Left"></Separator>
+                                    <MenuItem x:Name="Edit3" Click="Edit_Click" Template="{DynamicResource MenuItemControlTemplate}" Header="Edit" >
+                                    </MenuItem>
+                                    <Separator BorderThickness="1" BorderBrush="BurlyWood" Foreground="{x:Null}" Width="240" HorizontalAlignment="Left"></Separator>
+                                    <MenuItem x:Name="Delete3" Click="Delete_Click" Template="{DynamicResource MenuItemControlTemplate}" Header="Delete"></MenuItem>
+                                </ContextMenu>
+                            </ListView.ContextMenu>
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <Grid>
@@ -193,27 +251,44 @@
                     </Grid>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="Newspapers" Header="Newspapers" Template="{DynamicResource TabItemControlTemplate1}">
+            <TabItem x:Name="Newspapers" Header="Newspapers"  Template="{DynamicResource TabItemControlTemplate1}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="92"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <Grid Grid.Row="0">
-                        <Grid x:Name="Panel4" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Margin="38,17,0,0" Width="380" >
-                            <TextBox x:Name="SearchBox4" Height="{Binding ElementName=Panel}" TextWrapping="NoWrap" ToolTip=""/>
+                    <Grid Margin="-2" Grid.Row="0">
+                        <Grid.Background>
+                            <LinearGradientBrush EndPoint="1,1" MappingMode="RelativeToBoundingBox" StartPoint="0,0">
+                                <GradientStop Color="White" Offset="1"/>
+                                <GradientStop Color="#FFFDBA82"/>
+                            </LinearGradientBrush>
+                        </Grid.Background>
+                        <Grid x:Name="Panel4" Background="#FFFDBA82" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Margin="38,17,0,0" Width="380" >
+                            <TextBox x:Name="SearchBox4" Height="{Binding ElementName=Panel}" TextChanged="SearchBox4_TextChanged" TextWrapping="NoWrap" ToolTip=""/>
                             <Grid HorizontalAlignment="Right" Margin="2,2,5,2" Width="51.205">
                                 <Path Data="M22.208,11.9165 C22.208,17.669374 17.572356,22.333 11.854,22.333 6.1356437,22.333 1.5,17.669374 1.5,11.9165 1.5,6.1636259 6.1356437,1.5 11.854,1.5 17.572356,1.5 22.208,6.1636259 22.208,11.9165 z M18.586039,20.753423 C30.171707,33.255499 29.993797,33.05739 29.993797,33.05739" Margin="8.75,6.25,10.961,5.192" Stretch="Fill" Stroke="#FFABADB3" StrokeThickness="3" />
                             </Grid>
                         </Grid>
-                        <Grid Margin="500.757,10,324.48,17.099">
+                        <Grid Background="Transparent" Margin="500.757,10,324.48,17.099">
                             <TextBlock x:Name="textBlock3" Margin="0,13.293,77.583,0" TextWrapping="Wrap" Text="Sort by:" VerticalAlignment="Top"/>
                             <RadioButton x:Name="NewspaperNameSortRadio" VerticalContentAlignment="Center" Content="Name" HorizontalAlignment="Right"  Margin="0,14.291,0,14.194" d:LayoutOverrides="Height" FontWeight="Bold" FontSize="21" Click="NewspaperNameSortRadio_Click"/>
                         </Grid>
                         <Button x:Name="Add3" Style="{DynamicResource AddButtonStyle}" Click="Add3_Click" BorderBrush="#FF7EB4EA" BorderThickness="3"  Content="Add Newspaper" VerticalAlignment="Top" Margin="0,17,40,0" Height="50" HorizontalContentAlignment="Left" HorizontalAlignment="Right" Width="253" />
                     </Grid>
                     <Grid Grid.Row="1">
-                        <ListView x:Name="listView4" Template="{DynamicResource ListBoxControlTemplate}" >
+                        <ListView x:Name="listView4" >
+                            <ListView.ContextMenu>
+                                <ContextMenu x:Name="ContexMMenu4" Opened="ContexMMenu1_Opened" >
+                                    <MenuItem x:Name="AddToBookmarks4" Click="AddToBookmarks_Click" IsChecked="False" Template="{DynamicResource MenuItemControlTemplate}" Header="Add to Bookmarks"></MenuItem>
+                                    <MenuItem x:Name="RemoveFromBookmarks4" Click="RemoveFromBookmarks_Click" IsChecked="False" Template="{DynamicResource MenuItemControlTemplate}" Header="Remove from Bookmarks"></MenuItem>
+                                    <Separator BorderThickness="1" BorderBrush="BurlyWood" Foreground="{x:Null}" Width="240" HorizontalAlignment="Left"></Separator>
+                                    <MenuItem x:Name="Edit4" Click="Edit_Click" Template="{DynamicResource MenuItemControlTemplate}" Header="Edit" >
+                                    </MenuItem>
+                                    <Separator BorderThickness="1" BorderBrush="BurlyWood" Foreground="{x:Null}" Width="240" HorizontalAlignment="Left"></Separator>
+                                    <MenuItem x:Name="Delete4" Click="Delete_Click" Template="{DynamicResource MenuItemControlTemplate}" Header="Delete"></MenuItem>
+                                </ContextMenu>
+                            </ListView.ContextMenu>
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <Grid>

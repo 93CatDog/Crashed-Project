@@ -21,11 +21,8 @@ namespace Books_and_Magazines
     {
         private MAIN wn;
         private Writer writer;
-
-        public WriterWindow()
-        {
-            InitializeComponent();
-        }       
+        private Info mlocalbookmarks = new Info();
+        private string fileName2 = "Bookmarks.txt";
 
         public WriterWindow(MAIN w)
         {
@@ -34,16 +31,40 @@ namespace Books_and_Magazines
 
             if (w.listView1.SelectedItem != null && w.listView1.SelectedItem is Writer)
             {
-                writer = (Writer)w.listView1.SelectedItem;
+                this.writer = (Writer)w.listView1.SelectedItem;
             }
-            else
+            if (w.listView5.SelectedItem != null && w.listView5.SelectedItem is Writer)
             {
-                writer = (Writer)w.listView2.SelectedItem;
+                this.writer = (Writer)w.listView5.SelectedItem;
             }
-
-            
+            if (w.listView2.SelectedItem != null && w.listView2.SelectedItem is Writer)
+            {
+                this.writer = (Writer)w.listView2.SelectedItem;
+            }
+            if (this.image.Source != null)
+                this.image.Source = new BitmapImage(new Uri(this.writer.ImageSource));
+            else
+                this.image.Source = new BitmapImage(new Uri("pack://application:,,,/Books_and_Magazines;component/DefaultWriter.png"));
+            this.FullNameContent.Text = " " + writer.FullName;
+            this.BirthDateContent.Text = " "+ this.writer.BirthDate.ToString() + "-";
+            this.DeathDateContent.Text =  this.writer.DeathDate.ToString();
+            this.BiographyContent.Text =  this.writer.Biography;
+            this.BooksListContent.Text = this.writer.AllBooks;
         }
-
+        private void AddToBookmarksBtn_Click(object sender, RoutedEventArgs e)
+        {
+            //if(wn.Bookmarks.IsSelected==false)
+            //{
+                //Writer tmp;
+                //tmp = this.mlocalbookmarks.Writers.Find(item => item.Name.Equals(writer.Name));
+                //if (tmp == null)
+                //{
+                //    mlocalbookmarks.Add_Writers(writer);
+                //    mlocalbookmarks.LoadToBinaryFile(fileName2);
+                //    this.wn.ViewBookmarks();
+                //}
+            //}           
+        }
 
     }
 }

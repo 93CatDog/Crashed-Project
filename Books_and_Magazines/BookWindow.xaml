@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Books_and_Magazines"
         mc:Ignorable="d"
-        Title="BookWindow" Icon="icon.png" WindowStartupLocation="CenterScreen" Width="1200">
+        Title="BookWindow" Icon="icon.png" WindowStartupLocation="CenterScreen" Height="500" Width="1100">
     <Window.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="FontSize" Value="14"/>
@@ -17,17 +17,39 @@
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="271*"/>
+            <ColumnDefinition Width="325*"/>
         </Grid.ColumnDefinitions>
-        <Button IsEnabled="False" Grid.Column="0" x:Name="AddToBookmarksBtn" Content="Add to Bookmarks" HorizontalAlignment="Left" Margin="367,123,0,0" VerticalAlignment="Top" Height="40"/>
-        <Image Grid.Column="0" x:Name="image"  HorizontalAlignment="Left" Height="285" Margin="27,10,0,0" VerticalAlignment="Top" Width="285"/>
-        <Button Grid.Column="0" IsEnabled="False" Content="Change photo" Height="40"  VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="171" Margin="76,0,0,168" />
-        <TextBlock Grid.Column="1" x:Name="WrtName" TextWrapping="Wrap" Text="Name:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="37,28,0,0"/>
-        <TextBlock Grid.Column="1" x:Name="About" HorizontalAlignment="Left" Margin="37,78,0,0" TextWrapping="Wrap" Text="Surname:" VerticalAlignment="Top"/>
-        <TextBlock Grid.Column="1" x:Name="Years" Margin="37,120,0,0" TextWrapping="Wrap" Text="Years:" VerticalAlignment="Top" HorizontalAlignment="Left" Width="82"/>
-        <TextBlock Grid.Column="1" x:Name="Biography" TextWrapping="Wrap" Text="Biography:" VerticalAlignment="Bottom" Margin="37,0,0,321" HorizontalAlignment="Left" Width="149"/>
-        <Button Grid.Column="0" Height="40" x:Name="OpenBtn" Content="Open" Click="OpenBtn_Click" HorizontalAlignment="Left" Margin="367,23,0,0" VerticalAlignment="Top" Width="75"/>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="94*"/>
+                <RowDefinition Height="62*"/>
+                <RowDefinition Height="87*"/>
+                <RowDefinition Height="69*"/>
+                <RowDefinition Height="78*"/>
+                <RowDefinition Height="78*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" TextWrapping="Wrap" Text="Name:"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="24,54,0,0" />
+            <TextBlock x:Name="BookName" Grid.Row="0" Height="30" TextWrapping="WrapWithOverflow" VerticalAlignment="Top" Margin="82,54,97,0"/>
+            <TextBlock Grid.Row="1" TextWrapping="Wrap" Text="Genre:"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="24,0,0,0" Width="44" />
+            <TextBlock x:Name="Genre" Height="29" Grid.Row="1" TextWrapping="WrapWithOverflow" VerticalAlignment="Top" Margin="68,0,327,0"/>
+
+            <TextBlock  Height="23" TextWrapping="Wrap" Text="Date:" Width="35" HorizontalAlignment="Left" VerticalAlignment="Top" TextAlignment="Left"  Grid.Row="1" Margin="33,34,0,0"/>
+            <TextBlock x:Name="Date"  Height="28" Margin="63,34,353,0" TextWrapping="NoWrap" VerticalAlignment="Top" Grid.Row="1"/>
+            <TextBlock x:Name="Publishing"  Height="26" Margin="82,5,285,0" TextWrapping="NoWrap" VerticalAlignment="Top" Grid.Row="3"/>
+            <TextBlock  Height="22" TextWrapping="Wrap" Text="Publishing:" VerticalAlignment="Top" TextAlignment="Left" Margin="0,5,513,0" Grid.Row="3" HorizontalAlignment="Right" Width="77"/>
+            <TextBlock  Height="20" TextWrapping="Wrap" Text="   Annotation:" Width="88" HorizontalAlignment="Left" VerticalAlignment="Bottom" TextAlignment="Left" Margin="-11,0,0,58" Grid.Row="4"/>
+            <TextBlock TextWrapping="Wrap" Text="Writers:" HorizontalAlignment="Left" TextAlignment="Left" Grid.Row="2" Margin="21,11,0,0" Height="21" VerticalAlignment="Top"/>
+            <TextBlock x:Name="Writers"  Height="66" Margin="73,0,24,10" TextWrapping="WrapWithOverflow" VerticalAlignment="Bottom" Grid.Row="2"/>
+            <TextBlock x:Name="Annotation"  Height="89" Margin="77,0,73,67" TextWrapping="WrapWithOverflow" VerticalAlignment="Bottom" Grid.Row="4" Grid.RowSpan="2"/>
+
+
+        </Grid>
+        <Button  Click="AddToBookmarksBtn_Click"  Style="{DynamicResource AddButtonStyle}" Height="50" x:Name="AddToBookmarksBtn" Content="Add to Bookmarks" Margin="99,0,93,135" VerticalAlignment="Bottom" />
+        <Border Height="200"  Width="200" BorderThickness="3" HorizontalAlignment="Left" Margin="98.991,36,0,233" BorderBrush="#FF9996BF">
+            <Image x:Name="image" Margin="0,0,-3,0"/>
+        </Border>
+        <Button Grid.Column="0" Style="{DynamicResource SaveButtonStyle}" x:Name="OpenBtn" Content="Open" Click="OpenBtn_Click" HorizontalAlignment="Left" Margin="99,362,0,0" VerticalAlignment="Top" FontSize="22" FontFamily="Bradley Hand ITC" Height="41" Width="105"/>
 
     </Grid>
 </Window>

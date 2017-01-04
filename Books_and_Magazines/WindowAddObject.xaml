@@ -33,7 +33,7 @@
 
     </Window.Resources>
     <Grid>
-        <TabControl x:Name="tabControl" TabStripPlacement="Left">
+        <TabControl x:Name="tabControl" BorderBrush="#FFC37E7E" TabStripPlacement="Left" Template="{DynamicResource TabControlControlTemplate}">
             <TabControl.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -50,7 +50,7 @@
                     </Grid>
                 </DataTemplate>
             </TabControl.ItemTemplate>
-            <TabItem x:Name="Item1" Header="Writer" Template="{DynamicResource TabItemControlTemplate1}">
+            <TabItem x:Name="Item1" Header="Writer"  Template="{DynamicResource TabItemControlTemplate1}">
                 <Grid>
                     <Border BorderThickness="3" Width="200" Height="200" HorizontalAlignment="Left" Margin="41.491,27.5,0,0" VerticalAlignment="Top" d:LayoutOverrides="Height" BorderBrush="#FF9996BF">
                         <Image x:Name="WrtPhoto" Width="200" Height="200" Source="pack://application:,,,/Books_and_Magazines;component/DefaultWriter.png"  />
@@ -64,21 +64,46 @@
                     <TextBox x:Name="WrtDeathDate" Height="33" Margin="0,124.825,247.486,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="98.517"/>
                     <TextBlock x:Name="Years" Margin="370.979,120.412,0,0" TextWrapping="Wrap" Text="Years:" VerticalAlignment="Top" HorizontalAlignment="Left" Width="81.518"/>
                     <TextBlock x:Name="Defice" TextAlignment="Center" TextWrapping="Wrap" Text="-" Width="15.517"  HorizontalAlignment="Right" Margin="0,120.413,351.003,0" VerticalAlignment="Top" Height="37.413"/>
-                    <TextBlock x:Name="Choose_books" TextWrapping="Wrap" Text="Choose books:" VerticalAlignment="Top" Margin="283.996,180.752,0,0" HorizontalAlignment="Left" Width="168.501"/>
-                    <TextBox x:Name="Books"   Height="33" Margin="457.497,180.752,247.486,0" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="Books_TextChanged"/>
-                    <ListBox x:Name="Books_List" Margin="0,119.45,24.987,0" SelectionMode="Multiple" SelectionChanged="Books_List_SelectionChanged" HorizontalAlignment="Right" Visibility="Hidden" Width="204" Height="94.302" VerticalAlignment="Top" />
+                    <TextBlock x:Name="Choose_books" TextWrapping="Wrap" Text="Choose books:" VerticalAlignment="Top" Margin="283.996,176.338,0,0" HorizontalAlignment="Left" Width="168.501"/>
+                    <TextBox x:Name="Books"   Height="33" Margin="457.497,175.752,247.486,0" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="Books_TextChanged"/>
+
                     <TextBlock  TextWrapping="Wrap" Text="Biography:" VerticalAlignment="Bottom" Margin="283.996,0,0,145.533" HorizontalAlignment="Left" Width="148.003"/>
                     <TextBox x:Name="Biography" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" Height="118.5" Margin="457.497,0,80.503,64.446" TextWrapping="Wrap" VerticalAlignment="Bottom"/>
-                    <TextBlock x:Name="Book_3" TextWrapping="Wrap" Margin="0,223.165,38.486,202.421" HorizontalAlignment="Right" Width="190.501" FontSize="12" d:LayoutOverrides="Height"/>
-                    <TextBlock x:Name="Book_2" TextWrapping="Wrap" Margin="0,223.165,261.003,202.421" HorizontalAlignment="Right" Width="183.984" FontSize="12" d:LayoutOverrides="Height"/>
-                    <TextBlock x:Name="Book_1" TextWrapping="Wrap" Margin="283.996,223.165,460.486,202.42" d:LayoutOverrides="Height" FontSize="12"/>
+                    <ListBox x:Name="Books_List" LostFocus="Books_List_LostFocus" Margin="457.497,208.752,247.486,159.946" SelectionMode="Multiple" SelectionChanged="Books_List_SelectionChanged" Visibility="Hidden" />
                     <Button x:Name="Save_btn" Content="Save" Click="Save_Wrt_btn_Click" Height="41"  VerticalAlignment="Bottom" Margin="0,0,19.486,10" HorizontalAlignment="Right" Width="120" Style="{DynamicResource SaveButtonStyle}" />
+                    <ListBox x:Name="Books_List_Copy" KeyUp="Books_List_Copy_KeyUp" Margin="0,175.752,46.652,192.946" SelectionMode="Multiple" Visibility="Hidden" HorizontalAlignment="Right" Width="187.907" />
+                    <TextBlock x:Name="Choose_books_Copy" TextWrapping="Wrap" Text="You chose:" VerticalAlignment="Top" Margin="0,120.411,46.652,0" HorizontalAlignment="Right" Visibility="Hidden" Width="168.501"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="Item2" Header="Book" Template="{DynamicResource TabItemControlTemplate1}">
+                <Grid>
+                    <Border BorderThickness="3" Width="200" Height="200" HorizontalAlignment="Left" Margin="41.491,27.5,0,0" VerticalAlignment="Top" d:LayoutOverrides="Height" BorderBrush="#FF9996BF">
+                        <Image x:Name="BookPhoto" Width="200" Height="200" Source="pack://application:,,,/Books_and_Magazines;component/DefaultBook.png"  />
+                    </Border>
+                    <Button x:Name="AddBookPhoto_btn" Content="Add cover" Click="AddBookPhoto_btn_Click" Height="50"  VerticalAlignment="Bottom" HorizontalAlignment="Left"  Margin="47.491,0,0,164.713" Style="{DynamicResource AddButtonStyle}" Width="186" />
+                    <TextBlock  Height="35.886" TextWrapping="Wrap" Text="Name:" Width="86" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="366.497,27.5,0,0"/>
+                    <TextBox x:Name="BookName"  Height="33" Margin="457.497,30.386,247.486,0" TextWrapping="NoWrap" VerticalAlignment="Top"/>
+                    <TextBlock  Height="35.886" TextWrapping="Wrap" Text="Genre:" Width="86" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="366.497,78,0,0"/>
+                    <TextBox x:Name="Genre"  Height="33" Margin="457.497,78,247.486,0" TextWrapping="NoWrap" VerticalAlignment="Top"/>
+                    <TextBlock  Height="35.886" TextWrapping="Wrap" Text="Date:" Width="67" HorizontalAlignment="Left" VerticalAlignment="Top" TextAlignment="Left" Margin="385.497,124.826,0,0"/>
+                    <TextBox x:Name="Date"  Height="33" Margin="457.497,124.826,247.486,0" TextWrapping="NoWrap" VerticalAlignment="Top"/>
+                    <TextBox x:Name="Publishing"  Height="33" Margin="457.497,175.752,247.486,0" TextWrapping="NoWrap" TextChanged="Publishing_TextChanged" VerticalAlignment="Top"/>
+                    <TextBlock  Height="35.886" TextWrapping="Wrap" Text="  Publishing:" Width="166" HorizontalAlignment="Left" VerticalAlignment="Top" TextAlignment="Left" Margin="286.497,175.752,0,0"/>
+                    <TextBlock  Height="35.886" TextWrapping="Wrap" Text="   Annotation:" Width="181" HorizontalAlignment="Left" VerticalAlignment="Bottom" TextAlignment="Left" Margin="266.497,0,0,108.327"/>
+                    <TextBlock TextWrapping="Wrap" Text="Choose writers:" Width="186" HorizontalAlignment="Left" TextAlignment="Left" Margin="266.497,230.401,0,196.713"/>
+                    <TextBox x:Name="Writers"  Height="33" Margin="457.497,0,247.486,196.713" TextWrapping="NoWrap" VerticalAlignment="Bottom" TextChanged="Writers_TextChanged"/>
+                    <Button x:Name="AddBookAudio_btn" Content="Add audio" Click="AddBookAudio_btn_Click" Height="50"  VerticalAlignment="Bottom" HorizontalAlignment="Left"  Margin="47.491,0,0,100.506" Style="{DynamicResource AddButtonStyle}" Width="186" />
+                    <TextBox x:Name="Annotation" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" Height="88.213" Margin="457.497,0,65.17,56" TextWrapping="Wrap" VerticalAlignment="Bottom"/>
+                    <Button x:Name="Save_Book_btn_Copy" Content="Save" Click="Save_Book_btn_Copy_Click" Height="41"  VerticalAlignment="Bottom" Margin="0,0,19.486,10" HorizontalAlignment="Right" Width="120" Style="{DynamicResource SaveButtonStyle}" />
+                    <ListBox x:Name="Writers_List" LostFocus="Writers_List_LostFocus" Height="88.386" Margin="457.497,0,247.486,108.327" VerticalAlignment="Bottom" SelectionChanged="Writers_List_SelectionChanged" Visibility="Hidden"/>
+                    <ListBox x:Name="Writers_List_Copy" Margin="0,213.752,19.486,149.213" HorizontalAlignment="Right" Width="213.921" Visibility="Hidden" SelectionMode="Multiple" KeyUp="Writers_List_Copy_KeyUp"/>
+                    <TextBlock x:Name="Choose_writers" TextWrapping="Wrap" Text="You chose:" Width="186" HorizontalAlignment="Right" TextAlignment="Left" Margin="0,172.866,47.407,0" Height="35.886" Visibility="Hidden" VerticalAlignment="Top"/>
+                    <ListBox x:Name="Publishing_List" Margin="457.497,208.752,247.486,165.862" SelectionChanged="Publishing_List_SelectionChanged" SelectionMode="Single" Visibility="Hidden"/>
+                    <Button x:Name="AddBookFile_btn" Content="Add File" Click="AddBookFile_btn_Click" Height="50"  VerticalAlignment="Bottom" HorizontalAlignment="Left"  Margin="47.491,0,0,37.767" Style="{DynamicResource AddButtonStyle}" Width="186" />
 
+                </Grid>
             </TabItem>
-            <TabItem x:Name="Item3" Header="Newspaper " Template="{DynamicResource TabItemControlTemplate1}">
+            <TabItem x:Name="Item3" IsEnabled="False" Header="Newspaper " Template="{DynamicResource TabItemControlTemplate1}">
 
             </TabItem>
         </TabControl>

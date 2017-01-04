@@ -28,12 +28,13 @@ namespace Books_and_Magazines
     {
         private string mName;
         private string mAnnotation;
-        private string mGenre; //
+        private string mGenre;
         private int mDate;
         private List<Writer> mWritersList = new List<Writer>();
         private Publishing mPublishing;
         private string mImageSource = "pack://application:,,,/Books_and_Magazines;component/DefaultBook.png";
         private string mFileSource;
+        private string mAudioSource;
 
         public string FullName
         {
@@ -93,6 +94,16 @@ namespace Books_and_Magazines
                 return this.GetType().Name.ToString();
             }
         }
+        public string AllBooks
+        {
+            get
+            {
+                string str = " ";
+                foreach (var item in WritersList)
+                    str += item.FullName + ", ";
+                return str;
+            }
+        }
         public string About
         {
             get
@@ -119,7 +130,7 @@ namespace Books_and_Magazines
                 this.mPublishing = value;
             }
         }
-       
+
         public string ImageSource
         {
             get
@@ -128,7 +139,10 @@ namespace Books_and_Magazines
             }
             set
             {
-                this.mImageSource = "pack://application:,,,/Books_and_Magazines;component/" + value;
+                if (value.Contains('/'))
+                    this.mImageSource = value;
+                else
+                    this.mImageSource = "pack://application:,,,/Books_and_Magazines;component/" + value;
             }
         }
         public string FileSource
@@ -139,7 +153,24 @@ namespace Books_and_Magazines
             }
             set
             {
-                this.mFileSource = value;
+                if(value.Contains('/'))
+                    this.mFileSource = value;
+                else
+                    this.mFileSource= "pack://application:,,,/Books_and_Magazines;component/" + value;
+            }
+        }
+        public string AudioSource
+        {
+            get
+            {
+                return this.mAudioSource;
+            }
+            set
+            {
+                if (value.Contains('/'))
+                    this.mAudioSource = value;
+                else
+                    this.mAudioSource = "pack://application:,,,/Books_and_Magazines;component/" + value;
             }
         }
 

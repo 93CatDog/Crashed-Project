@@ -5,8 +5,60 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Books_and_Magazines"
         mc:Ignorable="d"
-        Title="WriterWindow" Width="1200">
+        Title="WriterWindow" Height="500" Width="1100">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="30" />
+            <Setter Property="FontFamily" Value="Bradley Hand ITC"/>
+        </Style>
+
+    </Window.Resources>
     <Grid>
-        
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="271*"/>
+                <ColumnDefinition Width="325*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="94*"/>
+                    <RowDefinition Height="62*"/>
+                    <RowDefinition Height="87*"/>
+                    <RowDefinition Height="69*"/>
+                    <RowDefinition Height="78*"/>
+                    <RowDefinition Height="78*"/>
+                </Grid.RowDefinitions>
+                <WrapPanel x:Name="Wrap1" Grid.Row="0" Margin="0,36,0,25" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin">
+                    <TextBlock   x:Name="FullName" TextWrapping="Wrap" Text="Full Name:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0"/>
+                    <TextBlock  x:Name="FullNameContent" Text="{Binding Path=FullName}"/>
+                </WrapPanel>
+
+                <WrapPanel x:Name="Wrap2"  Grid.Row="1" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" >
+                    <TextBlock x:Name="Years" TextWrapping="Wrap" Text="Years:" VerticalAlignment="Top"  HorizontalAlignment="Left"  />
+                    <TextBlock x:Name="BirthDateContent" Text="{Binding Path=BirthDate}" >
+                        <Run>-</Run>
+                    </TextBlock>
+                    <TextBlock x:Name="DeathDateContent" Text="{Binding Path=DeathDate}" />
+                </WrapPanel>
+
+                <WrapPanel x:Name="Wrap3" Orientation="Horizontal" Grid.Row="2" Margin="0,0,0,-26.648"  >
+                    <TextBlock Grid.Row="2" x:Name="BooksList" TextWrapping="Wrap" Text="Books:" VerticalAlignment="Top" Margin="0" HorizontalAlignment="Left" />
+                    <TextBlock Grid.Row="2" x:Name="BooksListContent" TextWrapping="WrapWithOverflow"  Text="{Binding Path=NamesFromBooksList}"/>
+                </WrapPanel>
+                <WrapPanel x:Name="Wrap4" Grid.Row="3"  Grid.RowSpan="3" d:LayoutOverrides="LeftMargin, RightMargin" Margin="0,31.648,0,0">
+                    <TextBlock x:Name="Biography" TextWrapping="Wrap" Text="Biography:" VerticalAlignment="Top" Margin="0" HorizontalAlignment="Left" />
+                    <TextBlock Grid.Row="3" x:Name="BiographyContent" Text="{Binding Biography}"/>
+                </WrapPanel>
+
+
+            </Grid>
+            <Button  Click="AddToBookmarksBtn_Click"  Style="{DynamicResource AddButtonStyle}" Height="50" x:Name="AddToBookmarksBtn" Content="Add to Bookmarks" Margin="98.991,0,100.039,135" VerticalAlignment="Bottom" />
+            <Border BorderThickness="3" HorizontalAlignment="Left" Margin="98.991,36,0,233" BorderBrush="#FF9996BF">
+                <Image x:Name="image" Height="200"  Width="200"/>
+            </Border>
+
+
+        </Grid>
+
     </Grid>
 </Window>

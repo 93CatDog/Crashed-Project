@@ -12,23 +12,7 @@
         </Grid.Background>
         <Button x:Name="button1" Click="button1_Click" Background="Transparent" Content="Click for START" VerticalAlignment="Top" HorizontalAlignment="Left"  FontFamily="Bradley Hand ITC" FontSize="40" Style="{DynamicResource Button_Book}" Margin="241.5,76.5,0,0"/>
         
-        <TextBlock x:Name="textBlock1" FontSize="20" Margin="171.833,215,0,181" TextWrapping="Wrap" Text="The best programme 
-                   
-                   
-                   
-                   
-                   
-                   
-                   
-                   
-                   
-                   
-                   
-                   
-                   
-                   
-                   
-                   ...Powered by Igor and Ivan" FontFamily="Bradley Hand ITC" HorizontalAlignment="Left" Width="402"/>
+        <TextBlock x:Name="textBlock1" FontSize="20" Margin="171.833,215,0,181" TextWrapping="Wrap" Text="The best  programme:  Library of Books and Newspapers                                                                                                                                                                                                                                                                                                                         ...Powered by Igor and Ivan" FontFamily="Bradley Hand ITC" HorizontalAlignment="Left" Width="402"/>
         <Grid Background="Transparent" Height="18.75" Margin="-0.25,-1.5,-0.25,0" VerticalAlignment="Top">
             <Button x:Name="button" Background="Transparent" HorizontalAlignment="Right" Margin="0,1.832,0.083,0.084" Width="16.833" Style="{DynamicResource Button_Book}">
                 <Border BorderBrush="Black" BorderThickness="1" Height="2.76" Width="12.025" Background="Black"/>

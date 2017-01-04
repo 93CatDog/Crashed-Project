@@ -115,6 +115,16 @@ namespace Books_and_Magazines
                 return "Years :" + Years + "\n" + "Wrote : " + this.NamesFromBooksList;
             }
         }
+        public string AllBooks
+        {
+            get
+            {
+                string str = " ";
+                foreach (var item in BooksList)
+                    str += item.Name+ ", ";
+                return str;
+            }
+        }
         public string ImageSource
         {
             get
@@ -188,7 +198,7 @@ namespace Books_and_Magazines
 
         public override string ToString()
         {
-            return (this.Name + " " + this.Surname + " " + this.BirthDate + " " + this.DeathDate + "\n");
+            return (this.Name + " " + this.Surname);// + " " + this.BirthDate + " " + this.DeathDate + "\n");
         }
 
         public bool Compare(string text)

@@ -59,6 +59,7 @@
     <Compile Include="DateException.cs" />
     <Compile Include="IncorrectStringException.cs" />
     <Compile Include="Issue.cs" />
+    <Compile Include="SimilarObjectException.cs" />
     <Compile Include="WriterWindow.xaml.cs">
       <DependentUpon>WriterWindow.xaml</DependentUpon>
     </Compile>
